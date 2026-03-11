@@ -7,34 +7,40 @@ sidebar: false
 
 # Education
 
--   B.S., ................................., ....................................University, Turkey, 20xx - 20xx.
--   M.S., Industrial Engineering, Hacettepe University, Turkey, 20xx - ongoing.
--   Ph.D.., Industrial Engineering, Hacettepe University, Turkey, 20xx - ongoing.
+-   B.S., Industrial Engineering, Middle East Technical University (METU), Turkey, 2017 - 2023.
+-   M.S., Industrial Engineering, Hacettepe University, Turkey, 2025 - ongoing.
 
 # Work Experience
 
 ## Employements
 
-1.  Firm xxx, position xx, year xxx
+1.  Enerjisa Retail, Customer Operations Specialist, August 2023 - February 2026
 
-2.  Firm yyy, position yyy, year yyy
+2.  Türk Traktör, Production Development Assistant, October 2022 - July 2023
+
+3.  Arvato Bertelsmann SCS, Systems Design Project Member, September 2022 - July 2023
 
 ## Internships
 
-1.  Firm aaa, position xx, year xxx
+1.  ITC, Digital Transformation Intern, Summer 2022
 
-2.  Firm bbb, position yyy, year yyy
+2.  BVN Air, Production Intern, Summer 2022
 
 # Projects
 
-1.  TUBİTAK 1001..........................
-
-# Publications
-
-1.  Dasdemir, E., Batta, R., Koksalan, M., Tezcaner Ozturk, D. (2022) “UAV Routing for Reconnaissance Mission: A Multi-Objective Orienteering Problem with Time-Dependent Prizes and Multiple Connections”, Computers & Operations Research, 145: 105882.
+1.  Opera: Developed an ML algorithm for case classification (KNN & SVM, 90%+ accuracy).
+2.  CaseGO: Led a team to automate case categorization and handing using LLM, NLP and RPA.
+3.  Optima: Partnering on the project of optimizing “Unlicensed Producer” processes from start to finish.
+4.  Optima: Leading on the project of creating a decision-making algorithm to sort the work data.
+5.  Ideathon: Submitted a ML algorithm to improve HR’s talent improvement program. (Finalist)
+6.  NAR: Submitted a supervised artificial intelligence algorithm and a mathematical model to optimize electrical charging stations’ locations. (4^th^ Place)
 
 # Competencies
 
-R, Quarto, Git, Python
+R, Quarto, Git, Python, Excel, Power Applications, VBA, SAS, SQL
 
-# Hobbies
+# Certifications
+
+1.  IELTS 8.0 Overall Score
+2.  TOEFL ibt 97 Overall Score
+3.  CPR (First Aid Certification)
