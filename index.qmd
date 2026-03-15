@@ -2,7 +2,7 @@
 title: "Welcome to My Analytics Lab"
 ---
 
-Hello!! My name is Fatih Alper Vural.
+Hello! My name is Fatih Alper Vural.
 
 This is my personal webpage.
 
