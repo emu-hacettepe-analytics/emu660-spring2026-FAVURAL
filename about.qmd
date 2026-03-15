@@ -1,9 +1,12 @@
 ---
 title: "About Me"
 sidebar: false 
+format:
+  html: default
+  pdf: default
 ---
 
-![](assets/images/vesikalik.jpeg){fig-align="center"}
+![](images/PP.jpg){fig-align="center"}
 
 # Education
 
