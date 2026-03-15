@@ -54,38 +54,36 @@ After I get an error I used this prompt as a followup:
 # Statistical summaries with mtcars
 # -------------------------------
 
-# Custom function to compute statistics
-compute_stats <- function(x) {
-  stats <- list(
-    mean = mean(x),
-    median = median(x),
-    variance = var(x),
+compute_stats <- function(x){
+  c(
+    Mean = mean(x),
+    Median = median(x),
+    Variance = var(x),
     IQR = IQR(x),
-    minimum = min(x),
-    maximum = max(x)
+    Min = min(x),
+    Max = max(x)
   )
-  return(stats)
 }
 
-# Load dataset
+cat("\n=================================\n")
+cat("PART 3c — mtcars Statistical Summary\n")
+cat("=================================\n\n")
+
 data(mtcars)
 
-# Apply function using a for loop
-for (col_name in names(mtcars)) {
-  if (is.numeric(mtcars[[col_name]])) {
-    cat("\nColumn:", col_name, "\n")
-    stats <- compute_stats(mtcars[[col_name]])
-    print(stats)
-  }
-}
+# For-loop approach
+stats_table <- sapply(mtcars, compute_stats)
+stats_table <- round(stats_table, 3)
 
-# Alternative approach with sapply
-cat("\nApplying compute_stats using sapply:\n")
-sapply(mtcars, compute_stats)
+cat("Summary statistics for each column:\n\n")
+print(stats_table)
 
-# Alternative approach with apply
-cat("\nApplying compute_stats using apply:\n")
-apply(mtcars, 2, compute_stats)
+# Alternative methods
+cat("\nAlternative calculation using sapply():\n")
+print(round(sapply(mtcars, compute_stats),3))
+
+cat("\nAlternative calculation using apply():\n")
+print(round(apply(mtcars,2,compute_stats),3))
 ```
 
 ## (d)
