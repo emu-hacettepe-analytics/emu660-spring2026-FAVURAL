@@ -4,12 +4,148 @@ title: "Assignment 1"
 
 # Assignment 1
 
-```{r}
-1 + 1
-```
-
-My first assignment has two parts.
+My first assignment has 4 parts.
 
 ## (a)
 
+(Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Kerem Demirtaş & Erdi Dasdemir) named video is chosen.
+
 ## (b)
+
+[**Open Ended Question:**]{.underline}
+
+**Question:**\
+In the data science workflow why is **problem definition** considered the most critical first step? Explain using the "Survivorship Bias".
+
+**Answer:**\
+Problem definition is critical because solving the wrong problem leads to incorrect conclusions even if the analysis is technically correct. In World War II where analysts examined bullet holes on returning bombers and suggested reinforcing the areas where most holes appeared. However, statistician Abraham Wald realized that the data only came from planes that survived. The planes that were hit in other areas (such as the engine or cockpit) never returned. Therefore, reinforcing the already damaged areas was incorrect; the vulnerable areas with **no bullet holes** on surviving planes were actually the places that needed reinforcement. This example demonstrates that correctly framing the problem determines whether the analysis leads to useful decisions.
+
+[**Multiple-Choice Question**]{.underline}
+
+Which of the following correctly describes the **typical stages of a data science project**?
+
+**A.** Data collection → Model building → Publish results → End of project\
+**B.** Problem definition → Data collection and preparation → Exploratory data analysis → Model building → Evaluation → Deployment\
+**C.** Model building → Data visualization → Data collection → Deployment\
+**D.** Data collection → Artificial intelligence training → Automation → Deployment
+
+**Correct Answer:**\
+**B. Problem definition → Data collection and preparation → Exploratory data analysis → Model building → Evaluation → Deployment**
+
+{Before I checked and rewrite small parts of the questions in this assignment I gathered the transcript from the chosen video and then fed to chatgpt using this prompt:
+
+Using this file help me on this: "Prepare one open-ended question and one multiple-choice question, along with their answers."}
+
+## (c)
+
+After feeding the assignment file into chatgpt I used the following prompt at first:
+
+"Write a single piece of code for parts 3c and 3d."
+
+After I get an error I used this prompt as a followup:
+
+"I get this error in Replace NA loop: Warning in \[\<-.factor(*tmp*, is.na(new_data\[\[col\]\]), value = "Fatih_18") : invalid factor level, NA generated Error in charToDate(x) : character string is not in a standard unambiguous format"
+
+```{r}
+#| label: c
+
+# -------------------------------
+# PART 3c
+# Statistical summaries with mtcars
+# -------------------------------
+
+# Custom function to compute statistics
+compute_stats <- function(x) {
+  stats <- list(
+    mean = mean(x),
+    median = median(x),
+    variance = var(x),
+    IQR = IQR(x),
+    minimum = min(x),
+    maximum = max(x)
+  )
+  return(stats)
+}
+
+# Load dataset
+data(mtcars)
+
+# Apply function using a for loop
+for (col_name in names(mtcars)) {
+  if (is.numeric(mtcars[[col_name]])) {
+    cat("\nColumn:", col_name, "\n")
+    stats <- compute_stats(mtcars[[col_name]])
+    print(stats)
+  }
+}
+
+# Alternative approach with sapply
+cat("\nApplying compute_stats using sapply:\n")
+sapply(mtcars, compute_stats)
+
+# Alternative approach with apply
+cat("\nApplying compute_stats using apply:\n")
+apply(mtcars, 2, compute_stats)
+```
+
+## (d)
+
+```{r}
+#| label: d
+
+library(dslabs)
+data(polls_us_election_2016)
+
+my_first <- "Fatih"
+my_birth_year <- 2000
+
+k <- (nchar(my_first) + my_birth_year) %% 15 + 8
+cat("Value of k:", k, "\n")
+
+# Display rows of original dataset
+if (k %% 2 == 0) {
+  print(head(polls_us_election_2016, k))
+} else {
+  print(tail(polls_us_election_2016, k))
+}
+
+# NA calculations
+total_na <- sum(is.na(polls_us_election_2016))
+cat("Total NA values:", total_na, "\n")
+
+na_per_column <- colSums(is.na(polls_us_election_2016))
+print(sort(na_per_column, decreasing = TRUE)[1:8])
+
+# Create new dataset
+new_data <- polls_us_election_2016
+
+# Replace NA values safely
+for (col in names(new_data)) {
+  
+  if (is.numeric(new_data[[col]])) {
+    
+    new_data[[col]][is.na(new_data[[col]])] <- my_birth_year + k
+    
+  } else if (inherits(new_data[[col]], "Date")) {
+    
+    new_data[[col]][is.na(new_data[[col]])] <- Sys.Date()
+    
+  } else {
+    
+    new_data[[col]] <- as.character(new_data[[col]])
+    new_data[[col]][is.na(new_data[[col]])] <- paste0(my_first, "_", k)
+    
+  }
+}
+
+# Display rows of new dataset
+if (k %% 2 == 0) {
+  print(head(new_data, k))
+} else {
+  print(tail(new_data, k))
+}
+
+# Check NA values
+cat("Remaining NA values:", sum(is.na(new_data)), "\n")
+print(anyNA(new_data))
+```
