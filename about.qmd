@@ -1,8 +1,5 @@
 ---
 title: "About Me"
-sidebar: false 
-format:
-  html: default
 ---
 
 ![](images/PP.jpg){fig-align="center"}
@@ -46,3 +43,5 @@ R, Quarto, Git, Python, Excel, Power Applications, VBA, SAS, SQL
 1.  IELTS 8.0 Overall Score
 2.  TOEFL ibt 97 Overall Score
 3.  CPR (First Aid Certification)
+
+You can download my CV from [here](https://github.com/emu-hacettepe-analytics/emu660-spring2026-FAVURAL/blob/main/FAV_CV_ATS.pdf).
