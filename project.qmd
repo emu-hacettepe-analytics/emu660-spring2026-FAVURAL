@@ -16,6 +16,8 @@ xxxxxx
 
 xxxxxx
 
+[Link](https://github.com/emu-hacettepe-analytics/emu660-spring2026-FAVURAL/blob/main/Project_Data.RData)
+
 ## 2.1 Data Source
 
 xxxxxx
