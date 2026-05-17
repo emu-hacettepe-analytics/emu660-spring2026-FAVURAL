@@ -1020,4 +1020,254 @@ Package fontspec Info:
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <9.3075->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;"<6.57-9.3075>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;+ssty=0;"<-6.57>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;+ssty=1;"
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec
+(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;"
+
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 225.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 225.
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 225.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 225.
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'latinmodern-math.otf(3)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.57-9.3075,Font=latinmodern-math.otf,Style=MathScript},{Size=-6.57,Font=latinmodern-math.otf,Style=MathScriptScript}},RawFeature={mathfontdimen=xetex},BoldFont={latinmodern-math.otf},RawFeature={mathfontdimen=tex3}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <9.3075->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;"<6.57-9.3075>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;+ssty=0;"<-6.57>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;+ssty=1;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;"
+
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 225.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 225.
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 225.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 225.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.665pt on input line 225.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 225.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 225.
+(c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 225.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.665pt on input line 225.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 225.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 225.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.665pt on input line 225.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 225.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 225.
+(c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 225.
+(c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Package microtype Info: Patching varwidth to enable character protrusion.
+\MT@vwid@leftmargin=\dimen282
+\MT@vwid@rightmargin=\dimen283
+LaTeX Info: Redefining \microtypecontext on input line 225.
+Package microtype Info: Applying patch `item' on input line 225.
+Package microtype Info: Applying patch `toc' on input line 225.
+Package microtype Info: Applying patch `eqnum' on input line 225.
+Package microtype Info: Applying patch `footnote' on input line 225.
+Package microtype Info: Applying patch `verbatim' on input line 225.
+LaTeX Info: Redefining \microtypesetup on input line 225.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+Package microtype Info: Patching command `\showhyphens'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+(c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
+File: mt-LatinModernRoman.cfg 2026/02/26 v1.2 microtype config. file: Latin Modern Roman (RS)
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring ON on input line 225.
+\g__cctab_next_cctab=\catcodetable15
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmss' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 227.
+(c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+) (c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+Package tocbasic Info: character protrusion at toc deactivated on input line 231.
+No file project.toc.
+\tf@toc=\write4
+
+\openout4 = project.toc
+
+Underfull \hbox (badness 10000) in paragraph at lines 260--268
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 277--279
+
+ []
+
+[1
+
+
+{c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<project_files/figure-pdf/unnamed-chunk-2-1.pdf, id=24, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/unnamed-chunk-2-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/unnamed-chunk-2-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-2-1.pdf  used on input line 388.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--400
+
+ []
+
+[3<./project_files/figure-pdf/unnamed-chunk-2-1.pdf>]
+<project_files/figure-pdf/unnamed-chunk-3-1.pdf, id=35, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/unnamed-chunk-3-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-3-1.pdf  used on input line 433.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[4<./project_files/figure-pdf/unnamed-chunk-3-1.pdf>]
+<project_files/figure-pdf/unnamed-chunk-4-1.pdf, id=45, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/unnamed-chunk-4-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/unnamed-chunk-4-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-4-1.pdf  used on input line 471.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[5<./project_files/figure-pdf/unnamed-chunk-4-1.pdf>]
+<project_files/figure-pdf/unnamed-chunk-5-1.pdf, id=54, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/unnamed-chunk-5-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/unnamed-chunk-5-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-5-1.pdf  used on input line 496.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[6<./project_files/figure-pdf/unnamed-chunk-5-1.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 552--554
+
+ []
+
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 574.
+[7]
+Underfull \vbox (badness 10000) detected at line 720
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 720
+ []
+
+[8]
+Underfull \vbox (badness 10000) detected at line 720
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 720
+ []
+
+[9] [10] [11]
+<project_files/figure-pdf/trend-hpi-fx-1.pdf, id=91, 397.485pt x 361.35pt>
+File: project_files/figure-pdf/trend-hpi-fx-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/trend-hpi-fx-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/trend-hpi-fx-1.pdf  used on input line 880.
+(luatex.def)             Requested size: 397.48402pt x 361.34912pt.
+[12]
+<project_files/figure-pdf/trend-sales-1.pdf, id=99, 397.485pt x 289.08pt>
+File: project_files/figure-pdf/trend-sales-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/trend-sales-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/trend-sales-1.pdf  used on input line 908.
+(luatex.def)             Requested size: 397.48402pt x 289.07928pt.
+[13<./project_files/figure-pdf/trend-hpi-fx-1.pdf>]
+<project_files/figure-pdf/trend-credit-1.pdf, id=110, 397.485pt x 325.215pt>
+File: project_files/figure-pdf/trend-credit-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/trend-credit-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/trend-credit-1.pdf  used on input line 952.
+(luatex.def)             Requested size: 397.48402pt x 325.2142pt.
+[14<./project_files/figure-pdf/trend-sales-1.pdf>]
+<project_files/figure-pdf/regional-hpi-1.pdf, id=123, 397.485pt x 325.215pt>
+File: project_files/figure-pdf/regional-hpi-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/regional-hpi-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/regional-hpi-1.pdf  used on input line 987.
+(luatex.def)             Requested size: 397.48402pt x 325.2142pt.
+[15<./project_files/figure-pdf/trend-credit-1.pdf>]
+Overfull \hbox (157.60701pt too wide) in alignment at lines 1014--1043
+ [][][][] 
+ []
+
+ignored: Infinite glue shrinkage found in box being split [16<./project_files/figure-pdf/regional-hpi-1.pdf>] [17]
+! Undefined control sequence.
+<argument> ...\else \global \expandafter \let \cmrsideswitch 
+                                                  \@tempa \fi \fi 
+l.1107 (Intercept)
+                 & Intercept & -8.838 & 0.813 & -10.87 & 0.0000 & ***\\
+
+Here is how much of LuaTeX's memory you used:
+ 26795 strings out of 475892
+ 100000,1373583 words of node,token memory allocated
+ 8256 words of node memory still in use:
+   50 hlist, 5 vlist, 20 rule, 12 disc, 3 local_par, 2 dir, 238 glue, 46 kern, 25 penalty, 12 unset, 2 margin_kern, 430 glyph, 7 align_record, 1 span, 281 attribute, 72 glue_spec, 281 attribute_list, 4 temp, 1 align_stack, 4 if_stack, 2 write, 170 pdf_colorstack nodes
+   avail lists: 1:1,2:3949,3:234,4:1393,5:977,6:42,7:8311,8:1,9:485,10:11,11:441,12:1
+ 48913 multiletter control sequences out of 65536+600000
+ 64 fonts using 19213695 bytes
+ 108i,10n,114p,11228b,528s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!
