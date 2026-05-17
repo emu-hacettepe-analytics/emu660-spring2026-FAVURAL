@@ -35,7 +35,7 @@ execute:
 
 Housing affordability has emerged as one of the most pressing socioeconomic challenges in Türkiye over the past decade. This study investigates the key drivers of the sharp and sustained rise in housing prices between 2014 and 2024, drawing on four official monthly time-series datasets obtained from the Central Bank of the Republic of Türkiye (TCMB/EVDS): the House Price Index (HPI), housing sales statistics, USD/EUR exchange rates, and credit card sectoral expenditure data. Through exploratory analysis, correlation testing, regional comparison, and multiple linear regression modelling, we find that exchange rate depreciation and broad consumer spending inflation are the dominant macroeconomic forces behind rising house prices, while sales volumes display an inverse relationship with price levels — consistent with demand compression at high price levels. Regional heterogeneity is substantial: İstanbul and western metropolitan areas lead price growth, whereas interior Anatolian regions lag considerably. Our model explains approximately 95% of the variance in the national HPI, suggesting that macroeconomic indicators are strong predictors of housing price trajectories in Türkiye.
 
----
+------------------------------------------------------------------------
 
 # Project Overview and Scope
 
@@ -716,9 +716,9 @@ The exchange rate alone explains around 94% of variance in the HPI. Adding month
 
 -   **Consumer spending inflation amplifies the effect.** Total credit card expenditure is strongly correlated with the HPI, as broad nominal inflation raises construction costs, labour, and land values across the board.
 
--   **A simple OLS model explains ~95% of HPI variance**, demonstrating that macroeconomic indicators are powerful predictors of housing price trajectories in Türkiye. More advanced time-series models (VAR, ECM) could further capture lagged dynamics and structural breaks, particularly around the 2022 currency crisis.
+-   **A simple OLS model explains \~95% of HPI variance**, demonstrating that macroeconomic indicators are powerful predictors of housing price trajectories in Türkiye. More advanced time-series models (VAR, ECM) could further capture lagged dynamics and structural breaks, particularly around the 2022 currency crisis.
 
----
+------------------------------------------------------------------------
 
 *Note: Portions of the Python preprocessing code were developed with assistance from AI language model tools, as disclosed in the preprocessing section. All analytical code in R, narrative interpretation, and conclusions are the authors' own work.*
 
