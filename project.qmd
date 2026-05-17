@@ -114,6 +114,7 @@ The processed dataset consists of three main analytical tables:
     library(ggplot2)
     library(scales)
     usd_eur <- Conversion_Rates %>%
+      filter(Year < 2026) %>%
       mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month)))
 
     ggplot(usd_eur, aes(x = Date)) +
@@ -147,6 +148,7 @@ The processed dataset consists of three main analytical tables:
     library(ggplot2)
     library(scales)
     expense_quantity <- Expense_Quantity %>%
+      filter(Year < 2026) %>%
       mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month)))
 
     ggplot(
@@ -181,6 +183,7 @@ The processed dataset consists of three main analytical tables:
     library(scales)
 
     konut_index_sales <- Konut_Index_Sales %>%
+      filter(Year < 2026) %>%
       mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month)))
 
     ggplot(
@@ -205,6 +208,7 @@ library(scales)
 
 ggplot(
   Konut_Index_Sales %>%
+    filter(Year < 2026) %>%
     mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month))) %>%
     filter(Region %in% c("Türkiye", "İstanbul", "İzmir", "Ankara", "Adana, Mersin")),
   aes(x = Date, y = Total_Sales, color = Region)
@@ -433,12 +437,15 @@ library(kableExtra)
 load("Project_Data.RData")
 
 cr <- Conversion_Rates %>%
+  filter(Year < 2026) %>%
   mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month)))
 
 eq <- Expense_Quantity %>%
+  filter(Year < 2026) %>%
   mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month)))
 
 ks <- Konut_Index_Sales %>%
+  filter(Year < 2026) %>%
   mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month)))
 
 ks_turkey <- ks %>% filter(Region == "Türkiye")
@@ -587,21 +594,31 @@ ggplot(cr_long, aes(x = Date, y = Rate, color = Currency)) +
   theme_minimal(base_size = 11)
 ```
 
-### Monthly Housing Sales
+### Annual Housing Sales
 
 ```{r}
 #| label: trend-sales
 
-ggplot(ks_turkey, aes(x = Date, y = Total_Sales)) +
-  geom_col(fill = "#74add1", alpha = 0.85) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  scale_y_continuous(labels = label_comma(accuracy = 1)) +
-  labs(title = "Figure 4. Monthly Housing Sales – Türkiye",
+annual_sales <- ks_turkey %>%
+  group_by(Year) %>%
+  summarise(Annual_Sales = sum(Total_Sales, na.rm = TRUE), .groups = "drop")
+
+ggplot(annual_sales, aes(x = Year, y = Annual_Sales)) +
+  geom_line(color = "#74add1", linewidth = 1) +
+  geom_point(color = "#2c7bb6", size = 3) +
+  geom_text(aes(label = format(round(Annual_Sales / 1e3), big.mark = ",")),
+            vjust = -1, size = 3, color = "grey30") +
+  scale_x_continuous(breaks = seq(2014, 2025, by = 1)) +
+  scale_y_continuous(labels = label_comma(accuracy = 1),
+                     expand = expansion(mult = c(0.05, 0.15))) +
+  labs(title = "Figure 4. Annual Housing Sales – Türkiye",
+       subtitle = "Labels show thousands of units sold",
        x = NULL, y = "Units Sold") +
-  theme_minimal(base_size = 11)
+  theme_minimal(base_size = 11) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-Sales volumes show strong seasonality but have not risen with prices. Post-2022 softening is consistent with buyers being priced out of the market as affordability deteriorated.
+Annual sales peaked around 2021 and have trended downward since, even as prices continued to rise sharply — a clear sign of affordability-driven demand compression rather than a demand-led price surge.
 
 ### Annual Credit Card Expenditure
 
@@ -654,15 +671,16 @@ corr_vars <- combined %>%
 
 corr_mat <- cor(corr_vars, use = "complete.obs")
 
+# Pivot to long — keep SAME order for both axes so diagonal is top-left to bottom-right
+var_order <- c("HPI", "USD/TRY", "EUR/TRY", "CC Spend", "Sales")
+
 corr_df <- as.data.frame(corr_mat) %>%
   tibble::rownames_to_column("Var1") %>%
-  pivot_longer(-Var1, names_to = "Var2", values_to = "r")
-
-# Fix factor order
-var_order <- c("HPI", "USD/TRY", "EUR/TRY", "CC Spend", "Sales")
-corr_df <- corr_df %>%
-  mutate(Var1 = factor(Var1, levels = var_order),
-         Var2 = factor(Var2, levels = rev(var_order)))
+  pivot_longer(-Var1, names_to = "Var2", values_to = "r") %>%
+  mutate(
+    Var1 = factor(Var1, levels = var_order),
+    Var2 = factor(Var2, levels = var_order)
+  )
 
 ggplot(corr_df, aes(x = Var1, y = Var2, fill = r)) +
   geom_tile(color = "white", linewidth = 0.5) +
@@ -670,6 +688,7 @@ ggplot(corr_df, aes(x = Var1, y = Var2, fill = r)) +
   scale_fill_gradient2(low = "#d7191c", mid = "white", high = "#2c7bb6",
                        midpoint = 0, limits = c(-1, 1),
                        name = "Pearson r") +
+  scale_y_discrete(limits = rev(var_order)) +
   labs(title = "Figure 6. Correlation Heatmap of Key Variables",
        x = NULL, y = NULL) +
   theme_minimal(base_size = 11) +
@@ -722,9 +741,24 @@ The scatter plot on log-transformed variables shows an extremely tight linear re
 ```{r}
 #| label: regional-hpi-plot
 
-selected_regions <- c("Türkiye", "İstanbul", "Ankara",
-                      "Adana, Mersin", "Antalya, Burdur, Isparta",
-                      "Konya, Karaman")
+# Dynamically find the top-growth region (excluding Türkiye national aggregate)
+top_growth_region <- ks %>%
+  filter(Region != "Türkiye") %>%
+  group_by(Region) %>%
+  arrange(Date) %>%
+  summarise(
+    Growth_pct = (last(Konut_Endeksi) / first(Konut_Endeksi) - 1) * 100,
+    .groups = "drop"
+  ) %>%
+  slice_max(Growth_pct, n = 1) %>%
+  pull(Region)
+
+selected_regions <- unique(c(
+  "Türkiye", "İstanbul", "Ankara",
+  "Adana, Mersin", "Antalya, Burdur, Isparta",
+  "Konya, Karaman",
+  top_growth_region
+))
 
 ggplot(ks %>% filter(Region %in% selected_regions),
        aes(x = Date, y = Konut_Endeksi, color = Region)) +
