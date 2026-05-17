@@ -255,7 +255,8 @@ trajectories in Türkiye.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{Project Overview and Scope}\label{project-overview-and-scope}
+\section{1. Project Overview and
+Scope}\label{project-overview-and-scope}
 
 We want to look into the following question for this project:\\
 \strut \\
@@ -301,7 +302,7 @@ Specifically, we want to look at:
   Differences in how housing works in different regions
 \end{itemize}
 
-\section{Data}\label{data}
+\section{2. Data}\label{data}
 
 You can see Our data in R Data format below.
 
@@ -323,7 +324,7 @@ Data}
 [4] "url"              
 \end{verbatim}
 
-\subsection{Data Source}\label{data-source}
+\subsection{2.1 Data Source}\label{data-source}
 
 The data used in this project were obtained from the \textbf{Electronic
 Data Delivery System (EVDS)} of the Central Bank of the Republic of
@@ -347,7 +348,7 @@ The project is based on four datasets:
   Monthly sector-based credit card spending data
 \end{itemize}
 
-\subsection{General Information About
+\subsection{2.2 General Information About
 Data}\label{general-information-about-data}
 
 The processed dataset consists of three main analytical tables:
@@ -514,7 +515,7 @@ Table}\label{credit-card-expenditure-table}
 
 \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/unnamed-chunk-5-1.pdf}}
 
-\subsection{Potential Analyses}\label{potential-analyses}
+\subsection{2.3 Potential Analyses}\label{potential-analyses}
 
 \begin{itemize}
 \tightlist
@@ -530,7 +531,7 @@ Table}\label{credit-card-expenditure-table}
   category-based spending trends over time,
 \end{itemize}
 
-\subsection{Reason of Choice}\label{reason-of-choice}
+\subsection{2.4 Reason of Choice}\label{reason-of-choice}
 
 Housing prices are one of the most important economic and social issues
 in Türkiye. The rapid increase in housing prices has significant
@@ -550,7 +551,7 @@ All datasets are:
   This makes it easy for analyzing.
 \end{itemize}
 
-\subsection{Preprocessing}\label{preprocessing}
+\subsection{2.5 Preprocessing}\label{preprocessing}
 
 The raw EVDS datasets were provided in Excel format and contained
 different structures (wide vs.~long) and aggregation levels (province
@@ -738,7 +739,7 @@ Here you can find our python code.\\
 \end{Highlighting}
 \end{Shaded}
 
-\section{Analysis}\label{analysis}
+\section{3. Analysis}\label{analysis}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -776,7 +777,8 @@ Here you can find our python code.\\
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Exploratory Data Analysis}\label{exploratory-data-analysis}
+\subsection{3.1 Exploratory Data
+Analysis}\label{exploratory-data-analysis}
 
 We begin by examining the basic descriptive statistics of each key
 variable to understand their range and scale before looking at
@@ -836,10 +838,13 @@ EUR/TRY Rate & 2.7 & 13.9 & 6.8 & 49.9 & 13.7\\
 \bottomrule
 \end{longtable}
 
-The HPI has grown from around 100 to several thousand, reflecting the
-steep price escalation over the decade. The USD/TRY rate rose from
-roughly 2 to over 30, and monthly sales volumes are in the tens of
-thousands but show high variability.
+The House Price Index increased from low initial values to several
+thousand index points by the end of the sample period, showing the scale
+of the housing price surge in Türkiye. The exchange rate variables also
+rose sharply, while monthly sales remained volatile rather than
+following the same continuous upward pattern. This first descriptive
+comparison already suggests that price growth was more closely aligned
+with macroeconomic nominal variables than with transaction volume.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -872,11 +877,15 @@ Yemek & 3,156,894\\
 \bottomrule
 \end{longtable}
 
-Retail trade, food, and e-commerce dominate credit card spending.
-Construction and furniture categories, while smaller, are directly
-linked to housing demand.
+Credit card expenditures are dominated by broad consumption categories
+such as retail trade, food, fuel, and e-commerce. Construction and
+furniture may not always be the largest categories, but they remain
+analytically relevant because they are related to housing investment,
+renovation activity, and household formation. In this project, total
+card spending is used mainly as a proxy for the broader nominal
+consumption and inflation environment.
 
-\subsection{Trend Analysis}\label{trend-analysis}
+\subsection{3.2 Trend Analysis}\label{trend-analysis}
 
 \subsubsection{House Price Index Over
 Time}\label{house-price-index-over-time}
@@ -895,9 +904,13 @@ Time}\label{house-price-index-over-time}
 
 \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-hpi-1.pdf}}
 
-The HPI grew modestly through 2019, then accelerated sharply from 2020
-onward, with the steepest rise concentrated between 2021 and 2023 ---
-precisely mirroring the most severe TRY depreciation episodes.
+The House Price Index followed a relatively moderate path until
+approximately 2019, then accelerated sharply after 2020. The steepest
+increase occurred during the 2021--2023 period, which overlaps with
+severe exchange rate depreciation and high inflation. This timing is
+consistent with a cost-push interpretation in which imported materials,
+construction inputs, and inflation expectations contributed to higher
+housing prices.
 
 \subsubsection{Year-over-Year Growth Rate
 Comparison}\label{year-over-year-growth-rate-comparison}
@@ -938,10 +951,12 @@ analytical claim.
 
 \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-yoy-1.pdf}}
 
-The YoY chart is more telling than raw levels: the two series spike
-together, particularly in 2018, 2021, and 2022. When the exchange rate
-surged by over 80\% in 2021--2022, house price growth followed almost
-immediately --- consistent with a direct cost pass-through mechanism.
+The year-over-year comparison shows that major jumps in USD/TRY growth
+and HPI growth occur around similar periods, especially during the
+post-2020 acceleration. This supports the argument that exchange rate
+shocks and housing price inflation are strongly connected. However, the
+interpretation should remain cautious: the chart shows co-movement, not
+a controlled causal effect.
 
 \subsubsection{Exchange Rates Over Time}\label{exchange-rates-over-time}
 
@@ -989,11 +1004,6 @@ immediately --- consistent with a direct cost pass-through mechanism.
 
 \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-sales-1.pdf}}
 
-Annual sales peaked around 2021 and have trended downward since, even as
-prices continued to rise sharply --- a clear sign of
-affordability-driven demand compression rather than a demand-led price
-surge.
-
 \subsubsection{Annual Credit Card
 Expenditure}\label{annual-credit-card-expenditure}
 
@@ -1025,11 +1035,14 @@ Expenditure}\label{annual-credit-card-expenditure}
 
 \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-credit-1.pdf}}
 
-All categories grew sharply in nominal terms from 2020 onward,
-reflecting the broad inflationary environment which also raises
-construction costs, labour, and land values.
+Credit card expenditure increased sharply in nominal terms after 2020.
+This does not necessarily mean that real consumption increased at the
+same rate; instead, it largely reflects the broader inflationary
+environment. Since housing prices, construction costs, and household
+expenditures are all affected by inflation, this variable is useful as a
+broad macroeconomic pressure indicator.
 
-\subsection{Correlation Analysis}\label{correlation-analysis}
+\subsection{3.3 Correlation Analysis}\label{correlation-analysis}
 
 \subsubsection{Correlation Heatmap}\label{correlation-heatmap}
 
@@ -1107,11 +1120,14 @@ HPI vs Sales & 0.184\\
 \bottomrule
 \end{longtable}
 
-The heatmap confirms the narrative: HPI correlates near-perfectly with
-both exchange rates (r \textgreater{} 0.97) and credit card expenditure
-(r \textgreater{} 0.95), all driven by the same underlying monetary
-inflation. The HPI--Sales correlation is weakly negative, reflecting
-demand compression at high price levels.
+The correlation results confirm that the HPI has a very strong positive
+relationship with exchange rates and credit card spending. In contrast,
+housing sales have a much weaker relationship with the HPI. This
+supports the interpretation that nominal macroeconomic pressures are
+more closely aligned with housing price increases than sales volume.
+However, because all nominal variables trend upward over time, these
+correlations may partly reflect shared inflation dynamics and
+non-stationarity.
 
 \subsubsection{Scatter Plot: HPI
 vs.~USD/TRY}\label{scatter-plot-hpi-vs.-usdtry}
@@ -1140,7 +1156,7 @@ linear relationship with very little scatter, confirming that the
 correlation is not just a shared time trend artefact --- the
 relationship is genuinely strong at all levels of the exchange rate.
 
-\subsection{Regional Comparison}\label{regional-comparison}
+\subsection{3.4 Regional Comparison}\label{regional-comparison}
 
 \subsubsection{Regional HPI
 Trajectories}\label{regional-hpi-trajectories}
@@ -1269,12 +1285,15 @@ migration. Notably, interior Anatolian regions started from a much lower
 base but achieved comparable percentage growth, confirming the surge is
 a nationwide phenomenon rather than a metropolitan one.
 
-\subsection{Model Fitting}\label{model-fitting}
+\subsection{3.5 Model Fitting}\label{model-fitting}
 
-To formally quantify the drivers of housing price growth, we estimate a
-multiple linear regression model. Log-transformations are applied to all
-variables to handle exponential growth and to interpret coefficients as
-elasticities.
+To formally estimate the association between house prices and
+macroeconomic indicators, log-log regression models are used. Log
+transformation reduces the influence of scale differences and allows
+coefficients to be interpreted approximately as elasticities. Because
+this is a time-series dataset with strong trends, the model is
+interpreted as an explanatory association model rather than a causal
+forecast model.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1322,9 +1341,12 @@ log\_USD & log(USD/TRY) & 1.200 & 0.022 & 55.03 & 0.0000\\
 \bottomrule
 \end{longtable}
 
-The exchange rate alone accounts for over 94\% of the variance in the
-HPI. A 1\% increase in the USD/TRY rate is associated with approximately
-a 1\% increase in the housing price index.
+The baseline model indicates that USD/TRY alone explains a very large
+share of the variation in the national House Price Index. The positive
+elasticity means that higher exchange rates are strongly associated with
+higher house prices. This result is economically plausible because
+exchange rate depreciation can raise construction material costs,
+imported input prices, and inflation expectations.
 
 \subsubsection{Full Model --- Exchange Rate, Sales, and Credit Card
 Expenditure}\label{full-model-exchange-rate-sales-and-credit-card-expenditure}
@@ -1367,12 +1389,12 @@ log\_CC & log(CC Spend) & 0.679 & 0.044 & 15.55 & 0.0000 & ***\\
 \bottomrule
 \end{longtable}
 
-Adding sales volume and credit card expenditure raises the adjusted R²
-to approximately 0.95. Log(USD/TRY) remains the dominant and most
-significant predictor. Log(Sales) enters negatively, confirming that
-price increases coincide with falling transaction volumes rather than
-rising demand. Log(CC Spend) is positive, reflecting the general
-inflationary environment.
+Adding sales and credit card expenditure slightly improves the model
+fit. USD/TRY remains the dominant explanatory variable, while the sales
+coefficient helps capture the divergence between rising prices and
+weakening transaction activity. Credit card expenditure should be
+interpreted as a broad nominal/inflation proxy rather than a direct
+housing demand variable.
 
 \subsubsection{Actual vs.~Fitted}\label{actual-vs.-fitted}
 
@@ -1395,6 +1417,13 @@ inflationary environment.
 \end{Shaded}
 
 \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/fitted-chart-1.pdf}}
+
+The fitted values closely follow the actual log(HPI) series, including
+the acceleration after 2020. This confirms that the selected
+macroeconomic variables capture much of the observed variation in
+housing prices. However, the close fit should not be overinterpreted
+because the variables are time-dependent and may share common inflation
+trends.
 
 \subsubsection{Residual Plot}\label{residual-plot}
 
@@ -1426,65 +1455,72 @@ cluster in 2022, coinciding with the sharpest TRY depreciation ---
 possibly reflecting structural breaks not captured by the log-linear
 form.
 
-\subsection{Limitations}\label{limitations}
+\subsection{3.6 Results}\label{results}
 
-No analysis is without constraints, and acknowledging them is an
-important part of academic work.
+The empirical results indicate that housing prices in Türkiye increased
+in close association with exchange rate depreciation and broader nominal
+inflation conditions. The strongest statistical relationship is observed
+between the House Price Index and USD/TRY. Credit card expenditure also
+moves closely with housing prices, but it is better interpreted as a
+proxy for general nominal expansion rather than as a direct causal
+factor. Housing sales, on the other hand, do not rise in proportion to
+prices, suggesting that affordability constraints became more important
+over time.
+
+The model explains a very high share of the variation in log(HPI), but
+this high explanatory power should be interpreted carefully. Türkiye
+experienced a period of strong inflation, currency depreciation, and
+nominal price increases across many markets. Therefore, some of the
+observed correlation may reflect shared macroeconomic trends rather than
+independent causal effects. The year-over-year robustness model and
+diagnostic plots are included to reduce this concern and to make the
+interpretation more statistically credible.
+
+Overall, the evidence supports the conclusion that exchange rate
+depreciation, inflationary pressures, and cost-side dynamics are central
+to understanding the rise in house prices. At the same time, the
+findings do not prove that exchange rates alone caused the increase. A
+more advanced future study could include inflation-adjusted house
+prices, interest rates, mortgage loan volumes, construction cost
+indices, population/migration variables, and time-series methods such as
+VAR or error-correction models.
+
+\section{4. Results and Key Takeaways}\label{results-and-key-takeaways}
 
 \begin{itemize}
 \item
-  \textbf{Nominal variables only.} All variables are nominal --- no
-  inflation adjustment has been applied. Many series rise together
-  simply because of broad inflation, which may inflate the apparent
-  strength of correlations. A real House Price Index (deflated by CPI)
-  would be a more precise measure of genuine affordability loss.
+  \textbf{House prices increased dramatically after 2020.} The national
+  House Price Index shows a sharp acceleration, especially during the
+  2021--2023 period.
 \item
-  \textbf{Correlation is not causation.} The high correlations and
-  regression fit confirm strong co-movement, but they do not establish a
-  causal direction. Exchange rates and housing prices are likely jointly
-  influenced by monetary policy, which we do not model explicitly.
+  \textbf{Exchange rate depreciation is the strongest macroeconomic
+  correlate.} USD/TRY and HPI move very closely together, and the
+  log-log regression shows a strong positive association between
+  exchange rates and housing prices.
 \item
-  \textbf{Aggregated credit card data.} The credit card expenditure
-  variable aggregates all sectors and acts mainly as a general inflation
-  proxy. Sector-specific data (e.g., construction materials) would be
-  more theoretically precise.
+  \textbf{The increase is not explained by sales volume alone.} Housing
+  sales are volatile and do not rise proportionally with prices, which
+  supports the interpretation of affordability-driven demand
+  compression.
 \item
-  \textbf{Static OLS model.} The regression does not account for
-  autocorrelation or lagged effects. Time-series models (e.g., VAR or
-  Error Correction Models) would better capture the dynamic transmission
-  of exchange rate shocks into housing prices over time.
-\end{itemize}
-
-\section{Results and Key Takeaways}\label{results-and-key-takeaways}
-
-\begin{itemize}
+  \textbf{Credit card spending reflects the broader nominal inflation
+  environment.} Its strong relationship with HPI should be understood as
+  evidence of general nominal expansion rather than direct housing
+  demand.
 \item
-  \textbf{Exchange rate depreciation is the primary driver.} The USD/TRY
-  rate and the national HPI move almost in lockstep (r ≈ 0.97). A 1\%
-  rise in the exchange rate is associated with approximately a 1\% rise
-  in housing prices, reflecting the dollarised cost structure of
-  construction materials and real estate's role as an inflation hedge.
+  \textbf{The price surge is nationwide but regionally uneven.} İstanbul
+  and coastal regions reach high index levels, while many other regions
+  also experience substantial percentage growth.
 \item
-  \textbf{Housing sales volumes declined as prices surged.} After 2022,
-  monthly sales softened considerably even as prices accelerated. This
-  divergence indicates affordability-driven demand compression ---
-  buyers are being priced out rather than stimulated by the market.
+  \textbf{The results are statistically strong but should be interpreted
+  cautiously.} Since the variables are non-stationary and trend upward
+  over time, the project shows strong association rather than definitive
+  causality.
 \item
-  \textbf{The price surge is nationwide, not just metropolitan.} While
-  İstanbul leads in absolute index levels, central Anatolian regions
-  have recorded comparable percentage growth from their lower base,
-  suggesting the underlying inflationary forces are country-wide.
-\item
-  \textbf{Consumer spending inflation amplifies the effect.} Total
-  credit card expenditure is strongly correlated with the HPI, as broad
-  nominal inflation raises construction costs, labour, and land values
-  across the board.
-\item
-  \textbf{A simple OLS model explains \textasciitilde95\% of HPI
-  variance}, demonstrating that macroeconomic indicators are powerful
-  predictors of housing price trajectories in Türkiye. More advanced
-  time-series models (VAR, ECM) could further capture lagged dynamics
-  and structural breaks, particularly around the 2022 currency crisis.
+  \textbf{Further research could improve causal interpretation.}
+  Inflation-adjusted prices, interest rates, mortgage data, construction
+  cost indices, and dynamic time-series models would make the analysis
+  stronger.
 \end{itemize}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
