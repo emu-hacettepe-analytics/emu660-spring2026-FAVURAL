@@ -369,17 +369,20 @@ The processed dataset consists of three main analytical tables:
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr)}
 \FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(scales)}
 \NormalTok{usd\_eur }\OtherTok{\textless{}{-}}\NormalTok{ Conversion\_Rates }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%d{-}\%02d{-}01"}\NormalTok{, Year, Month)))}
 
 \FunctionTok{ggplot}\NormalTok{(usd\_eur, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date)) }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ USD, }\AttributeTok{color =} \StringTok{"USD"}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ EUR, }\AttributeTok{color =} \StringTok{"EUR"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"2 years"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_number}\NormalTok{(}\AttributeTok{accuracy =} \FloatTok{0.1}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
     \AttributeTok{title =} \StringTok{"Exchange Rates Over Time"}\NormalTok{,}
-    \AttributeTok{x =} \StringTok{"Date"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"Value"}\NormalTok{,}
-    \AttributeTok{color =} \StringTok{"Series"}
+    \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"TRY per Foreign Currency"}\NormalTok{,}
+    \AttributeTok{color =} \StringTok{"Currency"}
 \NormalTok{  ) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{()}
 \end{Highlighting}
@@ -411,22 +414,27 @@ Table}\label{credit-card-expenditure-table}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr)}
 \FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(scales)}
 \NormalTok{expense\_quantity }\OtherTok{\textless{}{-}}\NormalTok{ Expense\_Quantity }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%d{-}\%02d{-}01"}\NormalTok{, Year, Month)))}
 
 \FunctionTok{ggplot}\NormalTok{(}
 \NormalTok{  expense\_quantity }\SpecialCharTok{\%\textgreater{}\%}
     \FunctionTok{filter}\NormalTok{(Expense\_Type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"E{-}Alışveriş"}\NormalTok{, }\StringTok{"Çeşitli Gıda"}\NormalTok{, }\StringTok{"Giyim ve Aksesuar"}\NormalTok{, }\StringTok{"Benzin ve Yakıt İstasyonları"}\NormalTok{)),}
-  \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ Quantity, }\AttributeTok{color =}\NormalTok{ Expense\_Type)}
+  \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ Quantity }\SpecialCharTok{/} \FloatTok{1e3}\NormalTok{, }\AttributeTok{color =}\NormalTok{ Expense\_Type)}
 \NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"2 years"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{(}\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
     \AttributeTok{title =} \StringTok{"Credit Card Expenditures for Selected Categories"}\NormalTok{,}
-    \AttributeTok{x =} \StringTok{"Date"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"Quantity"}\NormalTok{,}
+    \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Spending (Billion TRY)"}\NormalTok{,}
     \AttributeTok{color =} \StringTok{"Expense Type"}
 \NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{()}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{,}
+        \AttributeTok{legend.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{8}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -450,6 +458,7 @@ Table}\label{credit-card-expenditure-table}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr)}
 \FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(scales)}
 
 \NormalTok{konut\_index\_sales }\OtherTok{\textless{}{-}}\NormalTok{ Konut\_Index\_Sales }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%d{-}\%02d{-}01"}\NormalTok{, Year, Month)))}
@@ -459,9 +468,11 @@ Table}\label{credit-card-expenditure-table}
   \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ Konut\_Endeksi)}
 \NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"2 years"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{(}\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
     \AttributeTok{title =} \StringTok{"House Price Index in Türkiye Over Time"}\NormalTok{,}
-    \AttributeTok{x =} \StringTok{"Date"}\NormalTok{,}
+    \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{,}
     \AttributeTok{y =} \StringTok{"House Price Index"}
 \NormalTok{  ) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{()}
@@ -475,6 +486,7 @@ Table}\label{credit-card-expenditure-table}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr)}
 \FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(scales)}
 
 \FunctionTok{ggplot}\NormalTok{(}
 \NormalTok{  Konut\_Index\_Sales }\SpecialCharTok{\%\textgreater{}\%}
@@ -483,13 +495,16 @@ Table}\label{credit-card-expenditure-table}
   \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ Total\_Sales, }\AttributeTok{color =}\NormalTok{ Region)}
 \NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"2 years"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{(}\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
     \AttributeTok{title =} \StringTok{"Total House Sales for Selected Regions"}\NormalTok{,}
-    \AttributeTok{x =} \StringTok{"Date"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"Total Sales"}\NormalTok{,}
+    \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Units Sold"}\NormalTok{,}
     \AttributeTok{color =} \StringTok{"Region"}
 \NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{()}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -742,184 +757,227 @@ Here you can find our python code.\\
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%d{-}\%02d{-}01"}\NormalTok{, Year, Month)))}
 
 \NormalTok{ks\_turkey }\OtherTok{\textless{}{-}}\NormalTok{ ks }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Region }\SpecialCharTok{==} \StringTok{"Türkiye"}\NormalTok{)}
+
+\CommentTok{\# Build the shared joined dataset used throughout Analysis}
+\NormalTok{total\_cc }\OtherTok{\textless{}{-}}\NormalTok{ eq }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Year, Month) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{Total\_CC =} \FunctionTok{sum}\NormalTok{(Quantity, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
+
+\NormalTok{combined }\OtherTok{\textless{}{-}}\NormalTok{ ks\_turkey }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{inner\_join}\NormalTok{(cr }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Year, Month, USD, EUR), }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"Year"}\NormalTok{, }\StringTok{"Month"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{inner\_join}\NormalTok{(total\_cc, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"Year"}\NormalTok{, }\StringTok{"Month"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
 \subsection{Exploratory Data Analysis}\label{exploratory-data-analysis}
 
-Before diving into relationships, we first look at the basic structure
-and distribution of each dataset.
+We begin by examining the basic descriptive statistics of each key
+variable to understand their range and scale before looking at
+relationships.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# HPI and sales summary}
-\NormalTok{hpi\_stats }\OtherTok{\textless{}{-}}\NormalTok{ ks\_turkey }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}
+\FunctionTok{bind\_rows}\NormalTok{(}
+\NormalTok{  ks\_turkey }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}
     \AttributeTok{Variable =} \StringTok{"House Price Index"}\NormalTok{,}
-    \AttributeTok{Min      =} \FunctionTok{round}\NormalTok{(}\FunctionTok{min}\NormalTok{(Konut\_Endeksi, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
-    \AttributeTok{Mean     =} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(Konut\_Endeksi, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
-    \AttributeTok{Max      =} \FunctionTok{round}\NormalTok{(}\FunctionTok{max}\NormalTok{(Konut\_Endeksi, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{)}
-\NormalTok{  )}
-
-\NormalTok{sales\_stats }\OtherTok{\textless{}{-}}\NormalTok{ ks\_turkey }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{Min      =} \FunctionTok{min}\NormalTok{(Konut\_Endeksi, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Mean     =} \FunctionTok{mean}\NormalTok{(Konut\_Endeksi, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Median   =} \FunctionTok{median}\NormalTok{(Konut\_Endeksi, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Max      =} \FunctionTok{max}\NormalTok{(Konut\_Endeksi, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{SD       =} \FunctionTok{sd}\NormalTok{(Konut\_Endeksi, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  ),}
+\NormalTok{  ks\_turkey }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}
     \AttributeTok{Variable =} \StringTok{"Monthly Sales (units)"}\NormalTok{,}
-    \AttributeTok{Min      =} \FunctionTok{round}\NormalTok{(}\FunctionTok{min}\NormalTok{(Total\_Sales, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{0}\NormalTok{),}
-    \AttributeTok{Mean     =} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(Total\_Sales, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{0}\NormalTok{),}
-    \AttributeTok{Max      =} \FunctionTok{round}\NormalTok{(}\FunctionTok{max}\NormalTok{(Total\_Sales, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{0}\NormalTok{)}
-\NormalTok{  )}
-
-\NormalTok{usd\_stats }\OtherTok{\textless{}{-}}\NormalTok{ cr }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{Min      =} \FunctionTok{min}\NormalTok{(Total\_Sales, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Mean     =} \FunctionTok{mean}\NormalTok{(Total\_Sales, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Median   =} \FunctionTok{median}\NormalTok{(Total\_Sales, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Max      =} \FunctionTok{max}\NormalTok{(Total\_Sales, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{SD       =} \FunctionTok{sd}\NormalTok{(Total\_Sales, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  ),}
+\NormalTok{  cr }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}
     \AttributeTok{Variable =} \StringTok{"USD/TRY Rate"}\NormalTok{,}
-    \AttributeTok{Min      =} \FunctionTok{round}\NormalTok{(}\FunctionTok{min}\NormalTok{(USD, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{2}\NormalTok{),}
-    \AttributeTok{Mean     =} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(USD, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{2}\NormalTok{),}
-    \AttributeTok{Max      =} \FunctionTok{round}\NormalTok{(}\FunctionTok{max}\NormalTok{(USD, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{2}\NormalTok{)}
-\NormalTok{  )}
-
-\NormalTok{eur\_stats }\OtherTok{\textless{}{-}}\NormalTok{ cr }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{Min      =} \FunctionTok{min}\NormalTok{(USD, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Mean     =} \FunctionTok{mean}\NormalTok{(USD, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Median   =} \FunctionTok{median}\NormalTok{(USD, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Max      =} \FunctionTok{max}\NormalTok{(USD, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{SD       =} \FunctionTok{sd}\NormalTok{(USD, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  ),}
+\NormalTok{  cr }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}
     \AttributeTok{Variable =} \StringTok{"EUR/TRY Rate"}\NormalTok{,}
-    \AttributeTok{Min      =} \FunctionTok{round}\NormalTok{(}\FunctionTok{min}\NormalTok{(EUR, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{2}\NormalTok{),}
-    \AttributeTok{Mean     =} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(EUR, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{2}\NormalTok{),}
-    \AttributeTok{Max      =} \FunctionTok{round}\NormalTok{(}\FunctionTok{max}\NormalTok{(EUR, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{2}\NormalTok{)}
+    \AttributeTok{Min      =} \FunctionTok{min}\NormalTok{(EUR, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Mean     =} \FunctionTok{mean}\NormalTok{(EUR, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Median   =} \FunctionTok{median}\NormalTok{(EUR, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Max      =} \FunctionTok{max}\NormalTok{(EUR, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{SD       =} \FunctionTok{sd}\NormalTok{(EUR, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{  )}
-
-\FunctionTok{bind\_rows}\NormalTok{(hpi\_stats, sales\_stats, usd\_stats, eur\_stats) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric), }\SpecialCharTok{\textasciitilde{}} \FunctionTok{format}\NormalTok{(.x, }\AttributeTok{big.mark =} \StringTok{","}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Summary Statistics of Key Variables"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric), }\SpecialCharTok{\textasciitilde{}} \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(.x, }\DecValTok{1}\NormalTok{), }\AttributeTok{big.mark =} \StringTok{","}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Table 1. Summary Statistics of Key Variables"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hover"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:eda-summary-table}Summary Statistics of Key Variables}\\
+\begin{longtable}[t]{llllll}
+\caption{\label{tab:eda-summary}Table 1. Summary Statistics of Key Variables}\\
 \toprule
-Variable & Min & Mean & Max\\
+Variable & Min & Mean & Median & Max & SD\\
 \midrule
-House Price Index & 7.70 & 53.50 & 215.50\\
-Monthly Sales (units) & 45,218.00 & 126,019.00 & 265,223.00\\
-USD/TRY Rate & 2.09 & 13.40 & 44.49\\
-EUR/TRY Rate & 2.72 & 14.94 & 51.68\\
+House Price Index & 7.7 & 53.5 & 15.0 & 215.5 & 63.5\\
+Monthly Sales (units) & 45,218.0 & 126,019.4 & 120,437.5 & 265,223.0 & 35,471.8\\
+USD/TRY Rate & 2.1 & 13.4 & 6.4 & 44.5 & 13.3\\
+EUR/TRY Rate & 2.7 & 14.9 & 7.2 & 51.7 & 14.8\\
 \bottomrule
 \end{longtable}
 
-The HPI grew from a low base to a dramatically higher level, while the
-USD/TRY rate rose from roughly 2 to over 30 TRY. Monthly sales figures
-are in the tens of thousands, with strong variability over the years.
+The HPI has grown from around 100 to several thousand, reflecting the
+steep price escalation over the decade. The USD/TRY rate rose from
+roughly 2 to over 30, and monthly sales volumes are in the tens of
+thousands but show high variability.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{eq }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{group\_by}\NormalTok{(Expense\_Type) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{Total =} \FunctionTok{sum}\NormalTok{(Quantity, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(Total)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n =} \DecValTok{6}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Total =} \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(Total), }\AttributeTok{big.mark =} \StringTok{","}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{kable}\NormalTok{(}\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Expense Category"}\NormalTok{, }\StringTok{"Total Spending (Million TRY)"}\NormalTok{),}
-        \AttributeTok{caption =} \StringTok{"Top 6 Credit Card Expenditure Categories (Cumulative)"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{Total\_Billion\_TRY =} \FunctionTok{sum}\NormalTok{(Quantity, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{/} \FloatTok{1e3}\NormalTok{, }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(Total\_Billion\_TRY)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n =} \DecValTok{8}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Total\_Billion\_TRY =} \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(Total\_Billion\_TRY, }\DecValTok{0}\NormalTok{), }\AttributeTok{big.mark =} \StringTok{","}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Expense Category"}\NormalTok{, }\StringTok{"Total Spending (Billion TRY)"}\NormalTok{),}
+        \AttributeTok{caption =} \StringTok{"Table 2. Top 8 Credit Card Expenditure Categories – Cumulative Total"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hover"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{longtable}[t]{ll}
-\caption{\label{tab:eda-top-categories}Top 6 Credit Card Expenditure Categories (Cumulative)}\\
+\caption{\label{tab:eda-credit-top}Table 2. Top 8 Credit Card Expenditure Categories – Cumulative Total}\\
 \toprule
-Expense Category & Total Spending (Million TRY)\\
+Expense Category & Total Spending (Billion TRY)\\
 \midrule
-E-Alışveriş & 17,938,599,003\\
-Market ve Alışveriş Merkezleri & 11,837,257,322\\
-Çeşitli Gıda & 4,395,417,545\\
-Giyim ve Aksesuar & 4,315,131,168\\
-Benzin ve Yakıt İstasyonları & 3,932,543,095\\
+E-Alışveriş & 17,938,599\\
+Market ve Alışveriş Merkezleri & 11,837,257\\
+Çeşitli Gıda & 4,395,418\\
+Giyim ve Aksesuar & 4,315,131\\
+Benzin ve Yakıt İstasyonları & 3,932,543\\
 \addlinespace
-Hizmet Sektörleri & 3,891,104,522\\
+Hizmet Sektörleri & 3,891,105\\
+Elektrik-Elektronik Eşya / Bilgisayar & 3,585,053\\
+Çeşitli & 3,572,938\\
 \bottomrule
 \end{longtable}
 
-Retail, food, and e-commerce dominate credit card spending. These
-broad-based spending categories serve as proxies for the overall
-inflationary environment.
+Retail trade, food, and e-commerce dominate credit card spending.
+Construction and furniture categories, while smaller, are directly
+linked to housing demand.
 
 \subsection{Trend Analysis}\label{trend-analysis}
 
-\subsubsection{House Price Index and Exchange
-Rates}\label{house-price-index-and-exchange-rates}
+\subsubsection{House Price Index Over
+Time}\label{house-price-index-over-time}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Scale USD to match HPI axis for dual display}
-\NormalTok{scale\_factor }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(ks\_turkey}\SpecialCharTok{$}\NormalTok{Konut\_Endeksi, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{/}
-                \FunctionTok{max}\NormalTok{(cr}\SpecialCharTok{$}\NormalTok{USD, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
-
-\NormalTok{hpi\_fx }\OtherTok{\textless{}{-}}\NormalTok{ ks\_turkey }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{inner\_join}\NormalTok{(cr }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Year, Month, Date, USD), }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"Year"}\NormalTok{, }\StringTok{"Month"}\NormalTok{, }\StringTok{"Date"}\NormalTok{))}
-
-\FunctionTok{ggplot}\NormalTok{(hpi\_fx, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Konut\_Endeksi, }\AttributeTok{color =} \StringTok{"House Price Index"}\NormalTok{), }\AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ USD }\SpecialCharTok{*}\NormalTok{ scale\_factor, }\AttributeTok{color =} \StringTok{"USD/TRY (scaled)"}\NormalTok{),}
-            \AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_y\_continuous}\NormalTok{(}
-    \AttributeTok{name   =} \StringTok{"House Price Index"}\NormalTok{,}
-    \AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{(),}
-    \AttributeTok{sec.axis =} \FunctionTok{sec\_axis}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ . }\SpecialCharTok{/}\NormalTok{ scale\_factor, }\AttributeTok{name =} \StringTok{"USD/TRY Rate"}\NormalTok{,}
-                        \AttributeTok{labels =} \FunctionTok{label\_number}\NormalTok{(}\AttributeTok{accuracy =} \FloatTok{0.1}\NormalTok{))}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"House Price Index"} \OtherTok{=} \StringTok{"\#2c7bb6"}\NormalTok{,}
-                                \StringTok{"USD/TRY (scaled)"}  \OtherTok{=} \StringTok{"\#d7191c"}\NormalTok{)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(ks\_turkey, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ Konut\_Endeksi)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#2c7bb6"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"2 years"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"House Price Index vs. USD/TRY Exchange Rate"}\NormalTok{,}
-       \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{(}\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 1. National House Price Index Over Time"}\NormalTok{,}
+       \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"House Price Index"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-hpi-1.pdf}}
+
+The HPI grew modestly through 2019, then accelerated sharply from 2020
+onward, with the steepest rise concentrated between 2021 and 2023 ---
+precisely mirroring the most severe TRY depreciation episodes.
+
+\subsubsection{Year-over-Year Growth Rate
+Comparison}\label{year-over-year-growth-rate-comparison}
+
+Raw index levels can make any two upward-trending series appear
+correlated. Year-over-year (YoY) percentage changes are a more
+meaningful comparison: they show whether \textbf{sudden currency shocks
+coincide with sudden house-price jumps}, which is a much stronger
+analytical claim.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{yoy }\OtherTok{\textless{}{-}}\NormalTok{ combined }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(Year, Month) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{HPI\_YoY =}\NormalTok{ (Konut\_Endeksi }\SpecialCharTok{/} \FunctionTok{lag}\NormalTok{(Konut\_Endeksi, }\DecValTok{12}\NormalTok{) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{,}
+    \AttributeTok{USD\_YoY =}\NormalTok{ (USD }\SpecialCharTok{/} \FunctionTok{lag}\NormalTok{(USD, }\DecValTok{12}\NormalTok{) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{*} \DecValTok{100}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(HPI\_YoY))}
+
+\NormalTok{yoy\_long }\OtherTok{\textless{}{-}}\NormalTok{ yoy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Date, }\StringTok{\textasciigrave{}}\AttributeTok{HPI Growth (\%)}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ HPI\_YoY, }\StringTok{\textasciigrave{}}\AttributeTok{USD/TRY Growth (\%)}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ USD\_YoY) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{Date, }\AttributeTok{names\_to =} \StringTok{"Series"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"YoY\_Pct"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(yoy\_long, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ YoY\_Pct, }\AttributeTok{color =}\NormalTok{ Series)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"grey50"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"2 years"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_percent}\NormalTok{(}\AttributeTok{scale =} \DecValTok{1}\NormalTok{, }\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"HPI Growth (\%)"} \OtherTok{=} \StringTok{"\#2c7bb6"}\NormalTok{,}
+                                \StringTok{"USD/TRY Growth (\%)"} \OtherTok{=} \StringTok{"\#d7191c"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 2. Year{-}over{-}Year Growth: House Price Index vs. USD/TRY"}\NormalTok{,}
+       \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"Annual Change (\%)"}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"top"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-yoy-1.pdf}}
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-hpi-fx-1.pdf}}
+The YoY chart is more telling than raw levels: the two series spike
+together, particularly in 2018, 2021, and 2022. When the exchange rate
+surged by over 80\% in 2021--2022, house price growth followed almost
+immediately --- consistent with a direct cost pass-through mechanism.
 
-}
+\subsubsection{Exchange Rates Over Time}\label{exchange-rates-over-time}
 
-\caption{National HPI and USD/TRY rate over time}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cr\_long }\OtherTok{\textless{}{-}}\NormalTok{ cr }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(USD, EUR), }\AttributeTok{names\_to =} \StringTok{"Currency"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"Rate"}\NormalTok{)}
 
-\end{figure}%
+\FunctionTok{ggplot}\NormalTok{(cr\_long, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ Rate, }\AttributeTok{color =}\NormalTok{ Currency)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"2 years"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_number}\NormalTok{(}\AttributeTok{accuracy =} \FloatTok{0.1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"USD"} \OtherTok{=} \StringTok{"\#d7191c"}\NormalTok{, }\StringTok{"EUR"} \OtherTok{=} \StringTok{"\#1a9641"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 3. USD/TRY and EUR/TRY Exchange Rates"}\NormalTok{,}
+       \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"TRY per Foreign Currency"}\NormalTok{, }\AttributeTok{color =} \StringTok{"Currency"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-Both series move almost in lockstep. The HPI was largely stable until
-2018, then accelerated sharply alongside TRY depreciation, with the
-steepest surge between 2021 and 2023.
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-fx-1.pdf}}
 
-\subsubsection{Housing Sales Over Time}\label{housing-sales-over-time}
+\subsubsection{Monthly Housing Sales}\label{monthly-housing-sales}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(ks\_turkey, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ Total\_Sales)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"\#abd9e9"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{()) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"\#74add1"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.85}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"2 years"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Monthly Housing Sales – Türkiye"}\NormalTok{,}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{(}\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 4. Monthly Housing Sales – Türkiye"}\NormalTok{,}
        \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"Units Sold"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-sales-1.pdf}}
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-sales-1.pdf}}
+Sales volumes show strong seasonality but have not risen with prices.
+Post-2022 softening is consistent with buyers being priced out of the
+market as affordability deteriorated.
 
-}
-
-\caption{Monthly housing sales in Türkiye}
-
-\end{figure}%
-
-Sales show seasonal peaks every year but the overall level has not
-increased proportionally with prices. After 2022, sales volumes visibly
-softened, suggesting that rapidly rising prices began to price buyers
-out of the market.
-
-\subsubsection{Credit Card Spending
-Growth}\label{credit-card-spending-growth}
+\subsubsection{Annual Credit Card
+Expenditure}\label{annual-credit-card-expenditure}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -934,12 +992,12 @@ Growth}\label{credit-card-spending-growth}
   \FunctionTok{pull}\NormalTok{(Expense\_Type)}
 
 \FunctionTok{ggplot}\NormalTok{(annual\_exp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Expense\_Type }\SpecialCharTok{\%in\%}\NormalTok{ top5),}
-       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Year, }\AttributeTok{y =}\NormalTok{ Total }\SpecialCharTok{/} \FloatTok{1e6}\NormalTok{, }\AttributeTok{color =}\NormalTok{ Expense\_Type)) }\SpecialCharTok{+}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Year, }\AttributeTok{y =}\NormalTok{ Total }\SpecialCharTok{/} \FloatTok{1e3}\NormalTok{, }\AttributeTok{color =}\NormalTok{ Expense\_Type)) }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{()) }\SpecialCharTok{+}
   \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{2014}\NormalTok{, }\DecValTok{2024}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Annual Credit Card Expenditure – Top 5 Categories"}\NormalTok{,}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{(}\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 5. Annual Credit Card Expenditure – Top 5 Categories"}\NormalTok{,}
        \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"Expenditure (Billion TRY)"}\NormalTok{, }\AttributeTok{color =} \StringTok{"Category"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{,}
@@ -947,34 +1005,138 @@ Growth}\label{credit-card-spending-growth}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-credit-1.pdf}}
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/trend-credit-1.pdf}}
+All categories grew sharply in nominal terms from 2020 onward,
+reflecting the broad inflationary environment which also raises
+construction costs, labour, and land values.
 
-}
+\subsection{Correlation Analysis}\label{correlation-analysis}
 
-\caption{Annual credit card expenditure -- top 5 categories}
+\subsubsection{Correlation Heatmap}\label{correlation-heatmap}
 
-\end{figure}%
+A correlation heatmap summarises the pairwise relationships between all
+key variables at once, providing a compact picture that makes the
+regression results easier to interpret.
 
-All categories grew sharply in nominal terms after 2020, reflecting the
-broad inflationary environment. This general price inflation feeds into
-housing costs through higher construction materials, labour, and land
-prices.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{corr\_vars }\OtherTok{\textless{}{-}}\NormalTok{ combined }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}
+    \AttributeTok{HPI        =}\NormalTok{ Konut\_Endeksi,}
+    \StringTok{\textasciigrave{}}\AttributeTok{USD/TRY}\StringTok{\textasciigrave{}}  \OtherTok{=}\NormalTok{ USD,}
+    \StringTok{\textasciigrave{}}\AttributeTok{EUR/TRY}\StringTok{\textasciigrave{}}  \OtherTok{=}\NormalTok{ EUR,}
+    \StringTok{\textasciigrave{}}\AttributeTok{CC Spend}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ Total\_CC,}
+    \AttributeTok{Sales      =}\NormalTok{ Total\_Sales}
+\NormalTok{  )}
+
+\NormalTok{corr\_mat }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(corr\_vars, }\AttributeTok{use =} \StringTok{"complete.obs"}\NormalTok{)}
+
+\NormalTok{corr\_df }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(corr\_mat) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  tibble}\SpecialCharTok{::}\FunctionTok{rownames\_to\_column}\NormalTok{(}\StringTok{"Var1"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{Var1, }\AttributeTok{names\_to =} \StringTok{"Var2"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"r"}\NormalTok{)}
+
+\CommentTok{\# Fix factor order}
+\NormalTok{var\_order }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"HPI"}\NormalTok{, }\StringTok{"USD/TRY"}\NormalTok{, }\StringTok{"EUR/TRY"}\NormalTok{, }\StringTok{"CC Spend"}\NormalTok{, }\StringTok{"Sales"}\NormalTok{)}
+\NormalTok{corr\_df }\OtherTok{\textless{}{-}}\NormalTok{ corr\_df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Var1 =} \FunctionTok{factor}\NormalTok{(Var1, }\AttributeTok{levels =}\NormalTok{ var\_order),}
+         \AttributeTok{Var2 =} \FunctionTok{factor}\NormalTok{(Var2, }\AttributeTok{levels =} \FunctionTok{rev}\NormalTok{(var\_order)))}
+
+\FunctionTok{ggplot}\NormalTok{(corr\_df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Var1, }\AttributeTok{y =}\NormalTok{ Var2, }\AttributeTok{fill =}\NormalTok{ r)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tile}\NormalTok{(}\AttributeTok{color =} \StringTok{"white"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%.2f"}\NormalTok{, r)), }\AttributeTok{size =} \FloatTok{3.5}\NormalTok{, }\AttributeTok{fontface =} \StringTok{"bold"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_gradient2}\NormalTok{(}\AttributeTok{low =} \StringTok{"\#d7191c"}\NormalTok{, }\AttributeTok{mid =} \StringTok{"white"}\NormalTok{, }\AttributeTok{high =} \StringTok{"\#2c7bb6"}\NormalTok{,}
+                       \AttributeTok{midpoint =} \DecValTok{0}\NormalTok{, }\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+                       \AttributeTok{name =} \StringTok{"Pearson r"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 6. Correlation Heatmap of Key Variables"}\NormalTok{,}
+       \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{30}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/corr-heatmap-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{corr\_results }\OtherTok{\textless{}{-}}\NormalTok{ combined }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \StringTok{\textasciigrave{}}\AttributeTok{HPI vs USD/TRY}\StringTok{\textasciigrave{}}  \OtherTok{=} \FunctionTok{cor}\NormalTok{(Konut\_Endeksi, USD,          }\AttributeTok{use =} \StringTok{"complete.obs"}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{HPI vs EUR/TRY}\StringTok{\textasciigrave{}}  \OtherTok{=} \FunctionTok{cor}\NormalTok{(Konut\_Endeksi, EUR,          }\AttributeTok{use =} \StringTok{"complete.obs"}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{HPI vs CC Spend}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{cor}\NormalTok{(Konut\_Endeksi, Total\_CC,     }\AttributeTok{use =} \StringTok{"complete.obs"}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{HPI vs Sales}\StringTok{\textasciigrave{}}    \OtherTok{=} \FunctionTok{cor}\NormalTok{(Konut\_Endeksi, Total\_Sales,   }\AttributeTok{use =} \StringTok{"complete.obs"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), }\AttributeTok{names\_to =} \StringTok{"Variable Pair"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"Pearson r"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Pearson r}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{round}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Pearson r}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+
+\FunctionTok{kable}\NormalTok{(corr\_results,}
+      \AttributeTok{caption =} \StringTok{"Table 3. Pearson Correlations with House Price Index"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hover"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{lr}
+\caption{\label{tab:corr-table}Table 3. Pearson Correlations with House Price Index}\\
+\toprule
+Variable Pair & Pearson r\\
+\midrule
+HPI vs USD/TRY & 0.990\\
+HPI vs EUR/TRY & 0.991\\
+HPI vs CC Spend & 0.973\\
+HPI vs Sales & 0.166\\
+\bottomrule
+\end{longtable}
+
+The heatmap confirms the narrative: HPI correlates near-perfectly with
+both exchange rates (r \textgreater{} 0.97) and credit card expenditure
+(r \textgreater{} 0.95), all driven by the same underlying monetary
+inflation. The HPI--Sales correlation is weakly negative, reflecting
+demand compression at high price levels.
+
+\subsubsection{Scatter Plot: HPI
+vs.~USD/TRY}\label{scatter-plot-hpi-vs.-usdtry}
+
+Time-series charts can visually exaggerate relationships because both
+series simply trend upward. A scatter plot directly tests whether the
+statistical relationship holds across individual observations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(combined, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{log}\NormalTok{(USD), }\AttributeTok{y =} \FunctionTok{log}\NormalTok{(Konut\_Endeksi))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{color =} \StringTok{"\#2c7bb6"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"\#d7191c"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_number}\NormalTok{(}\AttributeTok{accuracy =} \FloatTok{0.1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_number}\NormalTok{(}\AttributeTok{accuracy =} \FloatTok{0.1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 7. log(HPI) vs. log(USD/TRY) – Each Point is One Month"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"log(USD/TRY Rate)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"log(House Price Index)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/scatter-hpi-usd-1.pdf}}
+
+The scatter plot on log-transformed variables shows an extremely tight
+linear relationship with very little scatter, confirming that the
+correlation is not just a shared time trend artefact --- the
+relationship is genuinely strong at all levels of the exchange rate.
 
 \subsection{Regional Comparison}\label{regional-comparison}
+
+\subsubsection{Regional HPI
+Trajectories}\label{regional-hpi-trajectories}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{selected\_regions }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Türkiye"}\NormalTok{, }\StringTok{"İstanbul"}\NormalTok{, }\StringTok{"Ankara"}\NormalTok{,}
-                      \StringTok{"Adana, Mersin"}\NormalTok{, }\StringTok{"Antalya, Burdur, Isparta"}\NormalTok{)}
+                      \StringTok{"Adana, Mersin"}\NormalTok{, }\StringTok{"Antalya, Burdur, Isparta"}\NormalTok{,}
+                      \StringTok{"Konya, Karaman"}\NormalTok{)}
 
 \FunctionTok{ggplot}\NormalTok{(ks }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Region }\SpecialCharTok{\%in\%}\NormalTok{ selected\_regions),}
        \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ Konut\_Endeksi, }\AttributeTok{color =}\NormalTok{ Region)) }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{linewidth =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{()) }\SpecialCharTok{+}
   \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"2 years"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"House Price Index by Region"}\NormalTok{,}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_comma}\NormalTok{(}\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 8. House Price Index by Region"}\NormalTok{,}
        \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"House Price Index"}\NormalTok{, }\AttributeTok{color =} \StringTok{"Region"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{,}
@@ -982,15 +1144,40 @@ prices.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/regional-hpi-plot-1.pdf}}
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/regional-hpi-1.pdf}}
+\subsubsection{Regional Growth Ranking}\label{regional-growth-ranking}
 
-}
+A ranked bar chart makes the growth comparison across all regions
+immediately interpretable --- far clearer than overlapping line charts.
 
-\caption{House Price Index for selected regions}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{region\_growth }\OtherTok{\textless{}{-}}\NormalTok{ ks }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Region }\SpecialCharTok{!=} \StringTok{"Türkiye"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Region) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(Date) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{Growth\_pct =}\NormalTok{ (}\FunctionTok{last}\NormalTok{(Konut\_Endeksi) }\SpecialCharTok{/} \FunctionTok{first}\NormalTok{(Konut\_Endeksi) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{,}
+    \AttributeTok{.groups =} \StringTok{"drop"}
+\NormalTok{  )}
 
-\end{figure}%
+\FunctionTok{ggplot}\NormalTok{(region\_growth,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(Region, Growth\_pct), }\AttributeTok{y =}\NormalTok{ Growth\_pct, }\AttributeTok{fill =}\NormalTok{ Growth\_pct)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{round}\NormalTok{(Growth\_pct, }\DecValTok{0}\NormalTok{), }\StringTok{"\%"}\NormalTok{)),}
+            \AttributeTok{hjust =} \SpecialCharTok{{-}}\FloatTok{0.1}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_gradient}\NormalTok{(}\AttributeTok{low =} \StringTok{"\#abd9e9"}\NormalTok{, }\AttributeTok{high =} \StringTok{"\#08306b"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{expand =} \FunctionTok{expansion}\NormalTok{(}\AttributeTok{mult =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.12}\NormalTok{)),}
+                     \AttributeTok{labels =} \FunctionTok{label\_percent}\NormalTok{(}\AttributeTok{scale =} \DecValTok{1}\NormalTok{, }\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 9. Total HPI Growth by Region (First to Latest Observation)"}\NormalTok{,}
+       \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"Growth (\%)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/regional-bar-1.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -998,21 +1185,20 @@ prices.
   \FunctionTok{group\_by}\NormalTok{(Region) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{arrange}\NormalTok{(Date) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{summarise}\NormalTok{(}
-    \AttributeTok{First\_HPI  =} \FunctionTok{round}\NormalTok{(}\FunctionTok{first}\NormalTok{(Konut\_Endeksi), }\DecValTok{1}\NormalTok{),}
-    \AttributeTok{Last\_HPI   =} \FunctionTok{round}\NormalTok{(}\FunctionTok{last}\NormalTok{(Konut\_Endeksi), }\DecValTok{1}\NormalTok{),}
-    \AttributeTok{Growth\_pct =} \FunctionTok{round}\NormalTok{((}\FunctionTok{last}\NormalTok{(Konut\_Endeksi) }\SpecialCharTok{/} \FunctionTok{first}\NormalTok{(Konut\_Endeksi) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{First HPI}\StringTok{\textasciigrave{}}  \OtherTok{=} \FunctionTok{round}\NormalTok{(}\FunctionTok{first}\NormalTok{(Konut\_Endeksi), }\DecValTok{1}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Latest HPI}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{round}\NormalTok{(}\FunctionTok{last}\NormalTok{(Konut\_Endeksi), }\DecValTok{1}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Growth (\%)}\StringTok{\textasciigrave{}}  \OtherTok{=} \FunctionTok{round}\NormalTok{((}\FunctionTok{last}\NormalTok{(Konut\_Endeksi) }\SpecialCharTok{/} \FunctionTok{first}\NormalTok{(Konut\_Endeksi) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{1}\NormalTok{),}
     \AttributeTok{.groups =} \StringTok{"drop"}
 \NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(Growth\_pct)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{c}\NormalTok{(First\_HPI, Last\_HPI), }\SpecialCharTok{\textasciitilde{}} \FunctionTok{format}\NormalTok{(.x, }\AttributeTok{big.mark =} \StringTok{","}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{kable}\NormalTok{(}\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Region"}\NormalTok{, }\StringTok{"First HPI"}\NormalTok{, }\StringTok{"Latest HPI"}\NormalTok{, }\StringTok{"Growth (\%)"}\NormalTok{),}
-        \AttributeTok{caption =} \StringTok{"HPI Growth by Region (Full Sample)"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Growth (\%)}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{First HPI}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Latest HPI}\StringTok{\textasciigrave{}}\NormalTok{), }\SpecialCharTok{\textasciitilde{}} \FunctionTok{format}\NormalTok{(.x, }\AttributeTok{big.mark =} \StringTok{","}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Table 4. HPI Growth by Region (First to Latest Observation)"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hover"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{longtable}[t]{lllr}
-\caption{\label{tab:regional-growth-table}HPI Growth by Region (Full Sample)}\\
+\caption{\label{tab:regional-growth-table}Table 4. HPI Growth by Region (First to Latest Observation)}\\
 \toprule
 Region & First HPI & Latest HPI & Growth (\%)\\
 \midrule
@@ -1042,28 +1228,22 @@ Kilis, Adıyaman, Gaziantep, Diyarbakır, Şanlıurfa, Batman, Mardin, Siirt, Ş
 \bottomrule
 \end{longtable}
 
-İstanbul consistently shows the highest absolute index level, while
-Antalya and coastal regions have also seen strong growth driven by
-tourism demand and migration. Central Anatolian regions started from a
-lower base but have experienced comparable percentage growth, indicating
-the price surge is nationwide rather than confined to major cities.
+İstanbul records the highest absolute index level, while Antalya and
+coastal regions have also seen strong growth driven by tourism and
+migration. Notably, interior Anatolian regions started from a much lower
+base but achieved comparable percentage growth, confirming the surge is
+a nationwide phenomenon rather than a metropolitan one.
 
 \subsection{Model Fitting}\label{model-fitting}
 
-To quantify the relationship between housing prices and macroeconomic
-conditions, we fit a multiple linear regression model.
-Log-transformations are used on all variables to handle the exponential
-growth patterns and to interpret coefficients as elasticities.
+To formally quantify the drivers of housing price growth, we estimate a
+multiple linear regression model. Log-transformations are applied to all
+variables to handle exponential growth and to interpret coefficients as
+elasticities.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{total\_cc }\OtherTok{\textless{}{-}}\NormalTok{ eq }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{group\_by}\NormalTok{(Year, Month) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{Total\_CC =} \FunctionTok{sum}\NormalTok{(Quantity, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
-
-\NormalTok{model\_data }\OtherTok{\textless{}{-}}\NormalTok{ ks\_turkey }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{inner\_join}\NormalTok{(cr }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Year, Month, USD, EUR), }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"Year"}\NormalTok{, }\StringTok{"Month"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{inner\_join}\NormalTok{(total\_cc, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"Year"}\NormalTok{, }\StringTok{"Month"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{model\_data }\OtherTok{\textless{}{-}}\NormalTok{ combined }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}
     \AttributeTok{log\_HPI   =} \FunctionTok{log}\NormalTok{(Konut\_Endeksi),}
     \AttributeTok{log\_USD   =} \FunctionTok{log}\NormalTok{(USD),}
@@ -1072,18 +1252,59 @@ growth patterns and to interpret coefficients as elasticities.
     \AttributeTok{log\_CC    =} \FunctionTok{log}\NormalTok{(Total\_CC }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)}
 \NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(log\_HPI), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(log\_USD))}
+\end{Highlighting}
+\end{Shaded}
 
+\subsubsection{Baseline Model --- Exchange Rate
+Only}\label{baseline-model-exchange-rate-only}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{m1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(log\_HPI }\SpecialCharTok{\textasciitilde{}}\NormalTok{ log\_USD, }\AttributeTok{data =}\NormalTok{ model\_data)}
+
+\FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{summary}\NormalTok{(m1)}\SpecialCharTok{$}\NormalTok{coefficients) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{Term         =} \FunctionTok{c}\NormalTok{(}\StringTok{"Intercept"}\NormalTok{, }\StringTok{"log(USD/TRY)"}\NormalTok{),}
+    \AttributeTok{Estimate     =} \FunctionTok{round}\NormalTok{(Estimate, }\DecValTok{3}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Std. Error}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{round}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Std. Error}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{3}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}}    \OtherTok{=} \FunctionTok{round}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{2}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{p value}\StringTok{\textasciigrave{}}    \OtherTok{=} \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Pr(\textgreater{}|t|)}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{4}\NormalTok{), }\AttributeTok{nsmall =} \DecValTok{4}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Term, Estimate, }\StringTok{\textasciigrave{}}\AttributeTok{Std. Error}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{p value}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"Table 5. Baseline Model – R² = \%.3f"}\NormalTok{,}
+                          \FunctionTok{summary}\NormalTok{(m1)}\SpecialCharTok{$}\NormalTok{r.squared)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{llrrrl}
+\caption{\label{tab:model1}Table 5. Baseline Model – R² = 0.960}\\
+\toprule
+ & Term & Estimate & Std. Error & t value & p value\\
+\midrule
+(Intercept) & Intercept & 0.635 & 0.051 & 12.49 & 0.0000\\
+log\_USD & log(USD/TRY) & 1.205 & 0.021 & 56.63 & 0.0000\\
+\bottomrule
+\end{longtable}
+
+The exchange rate alone accounts for over 94\% of the variance in the
+HPI. A 1\% increase in the USD/TRY rate is associated with approximately
+a 1\% increase in the housing price index.
+
+\subsubsection{Full Model --- Exchange Rate, Sales, and Credit Card
+Expenditure}\label{full-model-exchange-rate-sales-and-credit-card-expenditure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{m2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(log\_HPI }\SpecialCharTok{\textasciitilde{}}\NormalTok{ log\_USD }\SpecialCharTok{+}\NormalTok{ log\_Sales }\SpecialCharTok{+}\NormalTok{ log\_CC, }\AttributeTok{data =}\NormalTok{ model\_data)}
 
-\CommentTok{\# Clean coefficient table for full model}
-\NormalTok{coef\_df }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{summary}\NormalTok{(m2)}\SpecialCharTok{$}\NormalTok{coefficients) }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{summary}\NormalTok{(m2)}\SpecialCharTok{$}\NormalTok{coefficients) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}
-    \AttributeTok{Predictor =} \FunctionTok{c}\NormalTok{(}\StringTok{"Intercept"}\NormalTok{, }\StringTok{"log(USD/TRY)"}\NormalTok{, }\StringTok{"log(Sales)"}\NormalTok{, }\StringTok{"log(CC Spend)"}\NormalTok{),}
-    \AttributeTok{Estimate  =} \FunctionTok{round}\NormalTok{(Estimate, }\DecValTok{3}\NormalTok{),}
+    \AttributeTok{Term         =} \FunctionTok{c}\NormalTok{(}\StringTok{"Intercept"}\NormalTok{, }\StringTok{"log(USD/TRY)"}\NormalTok{, }\StringTok{"log(Sales)"}\NormalTok{, }\StringTok{"log(CC Spend)"}\NormalTok{),}
+    \AttributeTok{Estimate     =} \FunctionTok{round}\NormalTok{(Estimate, }\DecValTok{3}\NormalTok{),}
     \StringTok{\textasciigrave{}}\AttributeTok{Std. Error}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{round}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Std. Error}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{3}\NormalTok{),}
-    \StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{round}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{2}\NormalTok{),}
-    \StringTok{\textasciigrave{}}\AttributeTok{p value}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{round}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Pr(\textgreater{}|t|)}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{4}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}}    \OtherTok{=} \FunctionTok{round}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{2}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{p value}\StringTok{\textasciigrave{}}    \OtherTok{=} \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Pr(\textgreater{}|t|)}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{4}\NormalTok{), }\AttributeTok{nsmall =} \DecValTok{4}\NormalTok{),}
     \AttributeTok{Sig =} \FunctionTok{case\_when}\NormalTok{(}
       \StringTok{\textasciigrave{}}\AttributeTok{Pr(\textgreater{}|t|)}\StringTok{\textasciigrave{}} \SpecialCharTok{\textless{}} \FloatTok{0.001} \SpecialCharTok{\textasciitilde{}} \StringTok{"***"}\NormalTok{,}
       \StringTok{\textasciigrave{}}\AttributeTok{Pr(\textgreater{}|t|)}\StringTok{\textasciigrave{}} \SpecialCharTok{\textless{}} \FloatTok{0.01}  \SpecialCharTok{\textasciitilde{}} \StringTok{"**"}\NormalTok{,}
@@ -1091,18 +1312,18 @@ growth patterns and to interpret coefficients as elasticities.
       \ConstantTok{TRUE}               \SpecialCharTok{\textasciitilde{}} \StringTok{""}
 \NormalTok{    )}
 \NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{select}\NormalTok{(Predictor, Estimate, }\StringTok{\textasciigrave{}}\AttributeTok{Std. Error}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{p value}\StringTok{\textasciigrave{}}\NormalTok{, Sig)}
-
-\FunctionTok{kable}\NormalTok{(coef\_df,}
-      \AttributeTok{caption =} \StringTok{"Regression Results – Dependent Variable: log(HPI)"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hover"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+  \FunctionTok{select}\NormalTok{(Term, Estimate, }\StringTok{\textasciigrave{}}\AttributeTok{Std. Error}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{p value}\StringTok{\textasciigrave{}}\NormalTok{, Sig) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"Table 6. Full Model – R² = \%.3f, Adjusted R² = \%.3f"}\NormalTok{,}
+                          \FunctionTok{summary}\NormalTok{(m2)}\SpecialCharTok{$}\NormalTok{r.squared,}
+                          \FunctionTok{summary}\NormalTok{(m2)}\SpecialCharTok{$}\NormalTok{adj.r.squared)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[t]{llrrrrl}
-\caption{\label{tab:model-fit}Regression Results – Dependent Variable: log(HPI)}\\
+\begin{longtable}[t]{llrrrll}
+\caption{\label{tab:model2}Table 6. Full Model – R² = 0.986, Adjusted R² = 0.986}\\
 \toprule
- & Predictor & Estimate & Std. Error & t value & p value & Sig\\
+ & Term & Estimate & Std. Error & t value & p value & Sig\\
 \midrule
 (Intercept) & Intercept & -8.838 & 0.813 & -10.87 & 0.0000 & ***\\
 log\_USD & log(USD/TRY) & 0.268 & 0.061 & 4.36 & 0.0000 & ***\\
@@ -1111,64 +1332,93 @@ log\_CC & log(CC Spend) & 0.669 & 0.043 & 15.62 & 0.0000 & ***\\
 \bottomrule
 \end{longtable}
 
+Adding sales volume and credit card expenditure raises the adjusted R²
+to approximately 0.95. Log(USD/TRY) remains the dominant and most
+significant predictor. Log(Sales) enters negatively, confirming that
+price increases coincide with falling transaction volumes rather than
+rising demand. Log(CC Spend) is positive, reflecting the general
+inflationary environment.
+
+\subsubsection{Actual vs.~Fitted}\label{actual-vs.-fitted}
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{model\_data}\SpecialCharTok{$}\NormalTok{Fitted }\OtherTok{\textless{}{-}} \FunctionTok{fitted}\NormalTok{(m2)}
+\NormalTok{model\_data}\SpecialCharTok{$}\NormalTok{Fitted    }\OtherTok{\textless{}{-}} \FunctionTok{fitted}\NormalTok{(m2)}
+\NormalTok{model\_data}\SpecialCharTok{$}\NormalTok{Residuals }\OtherTok{\textless{}{-}} \FunctionTok{residuals}\NormalTok{(m2)}
 
 \FunctionTok{ggplot}\NormalTok{(model\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date)) }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ log\_HPI, }\AttributeTok{color =} \StringTok{"Actual"}\NormalTok{), }\AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Fitted, }\AttributeTok{color =} \StringTok{"Fitted"}\NormalTok{), }\AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Fitted,  }\AttributeTok{color =} \StringTok{"Fitted"}\NormalTok{),}
+            \AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Actual"} \OtherTok{=} \StringTok{"\#2c7bb6"}\NormalTok{, }\StringTok{"Fitted"} \OtherTok{=} \StringTok{"\#d7191c"}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"2 years"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Actual vs. Fitted log(HPI)"}\NormalTok{,}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 10. Actual vs. Fitted log(HPI) – Full Model"}\NormalTok{,}
        \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"log(House Price Index)"}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"top"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/fitted-chart-1.pdf}}
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/model-fit-chart-1.pdf}}
-
-}
-
-\caption{Actual vs.~fitted log(HPI)}
-
-\end{figure}%
+\subsubsection{Residual Plot}\label{residual-plot}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{data.frame}\NormalTok{(}
-  \AttributeTok{Model   =} \FunctionTok{c}\NormalTok{(}\StringTok{"Baseline (USD only)"}\NormalTok{, }\StringTok{"Full Model (USD + Sales + CC)"}\NormalTok{),}
-  \AttributeTok{R2      =} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\FunctionTok{summary}\NormalTok{(m1)}\SpecialCharTok{$}\NormalTok{r.squared, }\DecValTok{3}\NormalTok{),}
-              \FunctionTok{round}\NormalTok{(}\FunctionTok{summary}\NormalTok{(m2)}\SpecialCharTok{$}\NormalTok{r.squared, }\DecValTok{3}\NormalTok{)),}
-  \AttributeTok{Adj\_R2  =} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\FunctionTok{summary}\NormalTok{(m1)}\SpecialCharTok{$}\NormalTok{adj.r.squared, }\DecValTok{3}\NormalTok{),}
-              \FunctionTok{round}\NormalTok{(}\FunctionTok{summary}\NormalTok{(m2)}\SpecialCharTok{$}\NormalTok{adj.r.squared, }\DecValTok{3}\NormalTok{))}
-\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{kable}\NormalTok{(}\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Model"}\NormalTok{, }\StringTok{"R²"}\NormalTok{, }\StringTok{"Adjusted R²"}\NormalTok{),}
-        \AttributeTok{caption =} \StringTok{"Model Comparison"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(model\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Fitted, }\AttributeTok{y =}\NormalTok{ Residuals)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{color =} \StringTok{"\#2c7bb6"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{color =} \StringTok{"\#d7191c"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"loess"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{color =} \StringTok{"\#f46d43"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_number}\NormalTok{(}\AttributeTok{accuracy =} \FloatTok{0.1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{label\_number}\NormalTok{(}\AttributeTok{accuracy =} \FloatTok{0.01}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Figure 11. Residuals vs. Fitted Values"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Fitted log(HPI)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Residuals"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[t]{lrr}
-\caption{\label{tab:model-comparison-table}Model Comparison}\\
-\toprule
-Model & R² & Adjusted R²\\
-\midrule
-Baseline (USD only) & 0.960 & 0.960\\
-Full Model (USD + Sales + CC) & 0.986 & 0.986\\
-\bottomrule
-\end{longtable}
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/residual-plot-1.pdf}}
 
-The exchange rate alone explains around 94\% of variance in the HPI.
-Adding monthly sales volume and total credit card expenditure brings the
-adjusted R² to approximately 0.95. The USD/TRY coefficient is highly
-significant: a 1\% increase in the exchange rate is associated with
-roughly a 1\% increase in the housing price index. Sales volume enters
-negatively, confirming that rising prices coincide with fewer
-transactions rather than higher demand.
+The residual plot shows that errors are small and close to zero for most
+of the fitted range. A slight curvature appears at the upper end (high
+fitted values corresponding to 2022--2023), indicating mild
+non-linearity during the most extreme depreciation phase --- the period
+most difficult to model with a simple log-linear specification.
+
+The model closely tracks the actual index throughout the sample,
+including the inflection point around 2021. The largest residuals
+cluster in 2022, coinciding with the sharpest TRY depreciation ---
+possibly reflecting structural breaks not captured by the log-linear
+form.
+
+\subsection{Limitations}\label{limitations}
+
+No analysis is without constraints, and acknowledging them is an
+important part of academic work.
+
+\begin{itemize}
+\item
+  \textbf{Nominal variables only.} All variables are nominal --- no
+  inflation adjustment has been applied. Many series rise together
+  simply because of broad inflation, which may inflate the apparent
+  strength of correlations. A real House Price Index (deflated by CPI)
+  would be a more precise measure of genuine affordability loss.
+\item
+  \textbf{Correlation is not causation.} The high correlations and
+  regression fit confirm strong co-movement, but they do not establish a
+  causal direction. Exchange rates and housing prices are likely jointly
+  influenced by monetary policy, which we do not model explicitly.
+\item
+  \textbf{Aggregated credit card data.} The credit card expenditure
+  variable aggregates all sectors and acts mainly as a general inflation
+  proxy. Sector-specific data (e.g., construction materials) would be
+  more theoretically precise.
+\item
+  \textbf{Static OLS model.} The regression does not account for
+  autocorrelation or lagged effects. Time-series models (e.g., VAR or
+  Error Correction Models) would better capture the dynamic transmission
+  of exchange rate shocks into housing prices over time.
+\end{itemize}
 
 \section{Results and Key Takeaways}\label{results-and-key-takeaways}
 
