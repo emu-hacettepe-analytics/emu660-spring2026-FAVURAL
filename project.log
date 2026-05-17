@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.5.17)  17 MAY 2026 21:44
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.5.17)  17 MAY 2026 21:50
  restricted system commands enabled.
 **project.tex
 (./project.tex
@@ -1161,12 +1161,12 @@ No file project.toc.
 
 \openout4 = project.toc
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--269
+Underfull \hbox (badness 10000) in paragraph at lines 260--268
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--280
+Underfull \hbox (badness 10000) in paragraph at lines 277--279
 
  []
 
@@ -1177,10 +1177,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 278--280
 <project_files/figure-pdf/unnamed-chunk-2-1.pdf, id=24, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/unnamed-chunk-2-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/unnamed-chunk-2-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-2-1.pdf  used on input line 393.
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-2-1.pdf  used on input line 392.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--405
+Underfull \hbox (badness 10000) in paragraph at lines 402--404
 
  []
 
@@ -1188,98 +1188,98 @@ Underfull \hbox (badness 10000) in paragraph at lines 403--405
 <project_files/figure-pdf/unnamed-chunk-3-1.pdf, id=35, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/unnamed-chunk-3-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-3-1.pdf  used on input line 444.
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-3-1.pdf  used on input line 443.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 [4<./project_files/figure-pdf/unnamed-chunk-3-1.pdf>]
 <project_files/figure-pdf/unnamed-chunk-4-1.pdf, id=44, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/unnamed-chunk-4-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-4-1.pdf  used on input line 486.
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-4-1.pdf  used on input line 485.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 [5<./project_files/figure-pdf/unnamed-chunk-4-1.pdf>]
 <project_files/figure-pdf/unnamed-chunk-5-1.pdf, id=54, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/unnamed-chunk-5-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-5-1.pdf  used on input line 516.
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-5-1.pdf  used on input line 515.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 [6<./project_files/figure-pdf/unnamed-chunk-5-1.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 572--574
+Underfull \hbox (badness 10000) in paragraph at lines 571--573
 
  []
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 594.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 593.
 [7]
-Underfull \vbox (badness 10000) detected at line 740
+Underfull \vbox (badness 10000) detected at line 739
  []
 
 
-Underfull \vbox (badness 10000) detected at line 740
+Underfull \vbox (badness 10000) detected at line 739
  []
 
 [8]
-Underfull \vbox (badness 10000) detected at line 740
+Underfull \vbox (badness 10000) detected at line 739
  []
 
 
-Underfull \vbox (badness 10000) detected at line 740
+Underfull \vbox (badness 10000) detected at line 739
  []
 
 [9] [10] [11] [12]
 <project_files/figure-pdf/trend-hpi-1.pdf, id=96, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/trend-hpi-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/trend-hpi-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/trend-hpi-1.pdf  used on input line 905.
+Package luatex.def Info: project_files/figure-pdf/trend-hpi-1.pdf  used on input line 903.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 [13<./project_files/figure-pdf/trend-hpi-1.pdf>]
 <project_files/figure-pdf/trend-yoy-1.pdf, id=108, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/trend-yoy-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/trend-yoy-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/trend-yoy-1.pdf  used on input line 952.
+Package luatex.def Info: project_files/figure-pdf/trend-yoy-1.pdf  used on input line 950.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 [14<./project_files/figure-pdf/trend-yoy-1.pdf>]
 <project_files/figure-pdf/trend-fx-1.pdf, id=118, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/trend-fx-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/trend-fx-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/trend-fx-1.pdf  used on input line 979.
+Package luatex.def Info: project_files/figure-pdf/trend-fx-1.pdf  used on input line 977.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 <project_files/figure-pdf/trend-sales-1.pdf, id=119, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/trend-sales-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/trend-sales-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/trend-sales-1.pdf  used on input line 1005.
+Package luatex.def Info: project_files/figure-pdf/trend-sales-1.pdf  used on input line 1003.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 [15<./project_files/figure-pdf/trend-fx-1.pdf>]
 <project_files/figure-pdf/trend-credit-1.pdf, id=129, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/trend-credit-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/trend-credit-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/trend-credit-1.pdf  used on input line 1036.
+Package luatex.def Info: project_files/figure-pdf/trend-credit-1.pdf  used on input line 1034.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 [16<./project_files/figure-pdf/trend-sales-1.pdf>] [17<./project_files/figure-pdf/trend-credit-1.pdf>]
 <project_files/figure-pdf/corr-heatmap-1.pdf, id=150, 397.485pt x 361.35pt>
 File: project_files/figure-pdf/corr-heatmap-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/corr-heatmap-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/corr-heatmap-1.pdf  used on input line 1091.
+Package luatex.def Info: project_files/figure-pdf/corr-heatmap-1.pdf  used on input line 1089.
 (luatex.def)             Requested size: 397.48402pt x 361.34912pt.
 [18<./project_files/figure-pdf/corr-heatmap-1.pdf>]
 <project_files/figure-pdf/scatter-hpi-usd-1.pdf, id=161, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/scatter-hpi-usd-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/scatter-hpi-usd-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/scatter-hpi-usd-1.pdf  used on input line 1152.
+Package luatex.def Info: project_files/figure-pdf/scatter-hpi-usd-1.pdf  used on input line 1150.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 [19<./project_files/figure-pdf/scatter-hpi-usd-1.pdf>]
 <project_files/figure-pdf/regional-hpi-plot-1.pdf, id=177, 397.485pt x 252.945pt>
 File: project_files/figure-pdf/regional-hpi-plot-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/regional-hpi-plot-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/regional-hpi-plot-1.pdf  used on input line 1198.
+Package luatex.def Info: project_files/figure-pdf/regional-hpi-plot-1.pdf  used on input line 1196.
 (luatex.def)             Requested size: 397.48402pt x 252.94438pt.
 [20<./project_files/figure-pdf/regional-hpi-plot-1.pdf>]
 <project_files/figure-pdf/regional-bar-1.pdf, id=188, 397.485pt x 505.89pt>
 File: project_files/figure-pdf/regional-bar-1.pdf Graphic file (type pdf)
 <use project_files/figure-pdf/regional-bar-1.pdf>
-Package luatex.def Info: project_files/figure-pdf/regional-bar-1.pdf  used on input line 1231.
+Package luatex.def Info: project_files/figure-pdf/regional-bar-1.pdf  used on input line 1229.
 (luatex.def)             Requested size: 397.48402pt x 505.88875pt.
 [21]
-Overfull \hbox (157.60701pt too wide) in alignment at lines 1251--1280
+Overfull \hbox (157.60701pt too wide) in alignment at lines 1249--1278
  [][][][] 
  []
 
@@ -1287,7 +1287,7 @@ Overfull \hbox (157.60701pt too wide) in alignment at lines 1251--1280
 ! Undefined control sequence.
 <argument> ...\else \global \expandafter \let \cmrsideswitch 
                                                   \@tempa \fi \fi 
-l.1339 (Intercept)
+l.1337 (Intercept)
                  & Intercept & 0.644 & 0.052 & 12.49 & 0.0000\\
 
 Here is how much of LuaTeX's memory you used:
@@ -1295,8 +1295,8 @@ Here is how much of LuaTeX's memory you used:
  100000,1373583 words of node,token memory allocated
  10151 words of node memory still in use:
    55 hlist, 5 vlist, 19 rule, 8 disc, 4 local_par, 2 dir, 276 glue, 52 kern, 33 penalty, 11 unset, 2 margin_kern, 574 glyph, 6 align_record, 1 span, 358 attribute, 72 glue_spec, 358 attribute_list, 4 temp, 1 align_stack, 4 if_stack, 4 write, 1 pdf_dest, 236 pdf_colorstack nodes
-   avail lists: 1:1,2:3873,3:248,4:1299,5:912,6:41,7:8253,8:1,9:533,10:11,11:445,12:1
+   avail lists: 1:1,2:3874,3:248,4:1299,5:912,6:41,7:8245,8:1,9:533,10:11,11:445,12:1
  48950 multiletter control sequences out of 65536+600000
- 64 fonts using 19213695 bytes
+ 64 fonts using 19213847 bytes
  108i,10n,114p,11228b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
 !  ==> Fatal error occurred, no output PDF file produced!

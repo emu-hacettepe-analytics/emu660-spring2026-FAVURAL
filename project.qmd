@@ -37,7 +37,7 @@ Housing affordability has emerged as one of the most pressing socioeconomic chal
 
 ------------------------------------------------------------------------
 
-# 1. Project Overview and Scope
+# Project Overview and Scope
 
 We want to look into the following question for this project:\
 \
@@ -66,7 +66,7 @@ We want to find the main things that cause housing prices to go up. Specifically
 
 -   Differences in how housing works in different regions
 
-# 2. Data
+# Data
 
 You can see Our data in R Data format below.
 
@@ -80,7 +80,7 @@ load("Project_Data.RData")
 ls()
 ```
 
-## 2.1 Data Source
+## Data Source
 
 The data used in this project were obtained from the **Electronic Data Delivery System (EVDS)** of the Central Bank of the Republic of Türkiye (TCMB). EVDS provides official, high-frequency economic data and is widely used for academic and professional analysis.
 
@@ -98,7 +98,7 @@ The project is based on four datasets:
 -   **Credit Card Sectoral Expenditures**\
     Monthly sector-based credit card spending data
 
-## 2.2 General Information About Data
+## General Information About Data
 
 The processed dataset consists of three main analytical tables:
 
@@ -226,7 +226,7 @@ ggplot(
   theme(legend.position = "bottom")
 ```
 
-## 2.3 Potential Analyses
+## Potential Analyses
 
 -   time-series plots of house prices, exchange rates, and sales,
 -   regional comparisons of house price growth,
@@ -234,7 +234,7 @@ ggplot(
 -   relationships between sales volume and housing prices,
 -   category-based spending trends over time,
 
-## 2.4 Reason of Choice
+## Reason of Choice
 
 Housing prices are one of the most important economic and social issues in Türkiye. The rapid increase in housing prices has significant implications for affordability, investment decisions, and economic stability.
 
@@ -248,7 +248,7 @@ All datasets are:
 
     This makes it easy for analyzing.
 
-## 2.5 Preprocessing
+## Preprocessing
 
 The raw EVDS datasets were provided in Excel format and contained different structures (wide vs. long) and aggregation levels (province vs. region). We performed preprocessing in Python using pandas to standardize date formats, reshape wide datasets into long format, map categorical codes to meaningful labels, and align all datasets at a consistent monthly and regional level. In particular, house sales data were converted from province-level columns to regional aggregates compatible with the House Price Index. The final result consists of three clean analytical tables ready for further analysis.
 
@@ -422,7 +422,7 @@ with pd.ExcelWriter(output_file) as writer:
     table_konut.to_excel(writer, sheet_name="Housing", index=False)
 ```
 
-# 3. Analysis
+# Analysis
 
 ```{r}
 #| label: setup
@@ -460,7 +460,7 @@ combined <- ks_turkey %>%
   inner_join(total_cc, by = c("Year", "Month"))
 ```
 
-## 3.1 Exploratory Data Analysis
+## Exploratory Data Analysis
 
 We begin by examining the basic descriptive statistics of each key variable to understand their range and scale before looking at relationships.
 
@@ -524,7 +524,7 @@ eq %>%
 
 Credit card expenditures are dominated by broad consumption categories such as retail trade, food, fuel, and e-commerce. Construction and furniture may not always be the largest categories, but they remain analytically relevant because they are related to housing investment, renovation activity, and household formation. In this project, total card spending is used mainly as a proxy for the broader nominal consumption and inflation environment.
 
-## 3.2 Trend Analysis
+## Trend Analysis
 
 ### House Price Index Over Time
 
@@ -648,7 +648,7 @@ ggplot(annual_exp %>% filter(Expense_Type %in% top5),
 
 Credit card expenditure increased sharply in nominal terms after 2020. This does not necessarily mean that real consumption increased at the same rate; instead, it largely reflects the broader inflationary environment. Since housing prices, construction costs, and household expenditures are all affected by inflation, this variable is useful as a broad macroeconomic pressure indicator.
 
-## 3.3 Correlation Analysis
+## Correlation Analysis
 
 ### Correlation Heatmap
 
@@ -732,7 +732,7 @@ ggplot(combined, aes(x = log(USD), y = log(Konut_Endeksi))) +
 
 The scatter plot on log-transformed variables shows an extremely tight linear relationship with very little scatter, confirming that the correlation is not just a shared time trend artefact — the relationship is genuinely strong at all levels of the exchange rate.
 
-## 3.4 Regional Comparison
+## Regional Comparison
 
 ### Regional HPI Trajectories
 
@@ -821,7 +821,7 @@ ks %>%
 
 İstanbul records the highest absolute index level, while Antalya and coastal regions have also seen strong growth driven by tourism and migration. Notably, interior Anatolian regions started from a much lower base but achieved comparable percentage growth, confirming the surge is a nationwide phenomenon rather than a metropolitan one.
 
-## 3.5 Model Fitting
+## Model Fitting
 
 To formally estimate the association between house prices and macroeconomic indicators, log-log regression models are used. Log transformation reduces the influence of scale differences and allows coefficients to be interpreted approximately as elasticities. Because this is a time-series dataset with strong trends, the model is interpreted as an explanatory association model rather than a causal forecast model.
 
@@ -934,7 +934,7 @@ The residual plot shows that errors are small and close to zero for most of the 
 
 The model closely tracks the actual index throughout the sample, including the inflection point around 2021. The largest residuals cluster in 2022, coinciding with the sharpest TRY depreciation — possibly reflecting structural breaks not captured by the log-linear form.
 
-## 3.6 Results
+## Results
 
 The empirical results indicate that housing prices in Türkiye increased in close association with exchange rate depreciation and broader nominal inflation conditions. The strongest statistical relationship is observed between the House Price Index and USD/TRY. Credit card expenditure also moves closely with housing prices, but it is better interpreted as a proxy for general nominal expansion rather than as a direct causal factor. Housing sales, on the other hand, do not rise in proportion to prices, suggesting that affordability constraints became more important over time.
 
@@ -942,7 +942,7 @@ The model explains a very high share of the variation in log(HPI), but this high
 
 Overall, the evidence supports the conclusion that exchange rate depreciation, inflationary pressures, and cost-side dynamics are central to understanding the rise in house prices. At the same time, the findings do not prove that exchange rates alone caused the increase. A more advanced future study could include inflation-adjusted house prices, interest rates, mortgage loan volumes, construction cost indices, population/migration variables, and time-series methods such as VAR or error-correction models.
 
-# 4. Results and Key Takeaways
+# Results and Key Takeaways
 
 -   **House prices increased dramatically after 2020.** The national House Price Index shows a sharp acceleration, especially during the 2021–2023 period.
 
