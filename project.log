@@ -1084,4 +1084,219 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
 (Font)              scaled to size 10.95pt on input line 225.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
 (Font)              scaled to size 7.665pt on input line 225.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 225.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 225.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.665pt on input line 225.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 225.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 225.
+(c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 225.
+(c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Package microtype Info: Patching varwidth to enable character protrusion.
+\MT@vwid@leftmargin=\dimen282
+\MT@vwid@rightmargin=\dimen283
+LaTeX Info: Redefining \microtypecontext on input line 225.
+Package microtype Info: Applying patch `item' on input line 225.
+Package microtype Info: Applying patch `toc' on input line 225.
+Package microtype Info: Applying patch `eqnum' on input line 225.
+Package microtype Info: Applying patch `footnote' on input line 225.
+Package microtype Info: Applying patch `verbatim' on input line 225.
+LaTeX Info: Redefining \microtypesetup on input line 225.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+Package microtype Info: Patching command `\showhyphens'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+(c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
+File: mt-LatinModernRoman.cfg 2026/02/26 v1.2 microtype config. file: Latin Modern Roman (RS)
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring ON on input line 225.
+\g__cctab_next_cctab=\catcodetable15
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmss' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 227.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 227.
+(c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+) (c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+Package tocbasic Info: character protrusion at toc deactivated on input line 231.
+No file project.toc.
+\tf@toc=\write4
+
+\openout4 = project.toc
+
+Underfull \hbox (badness 10000) in paragraph at lines 260--268
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 277--279
+
+ []
+
+[1
+
+
+{c:/Users/fatih/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<project_files/figure-pdf/unnamed-chunk-2-1.pdf, id=24, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/unnamed-chunk-2-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/unnamed-chunk-2-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-2-1.pdf  used on input line 391.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 401--403
+
+ []
+
+[3<./project_files/figure-pdf/unnamed-chunk-2-1.pdf>]
+<project_files/figure-pdf/unnamed-chunk-3-1.pdf, id=35, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/unnamed-chunk-3-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-3-1.pdf  used on input line 441.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[4<./project_files/figure-pdf/unnamed-chunk-3-1.pdf>]
+<project_files/figure-pdf/unnamed-chunk-4-1.pdf, id=44, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/unnamed-chunk-4-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/unnamed-chunk-4-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-4-1.pdf  used on input line 482.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[5<./project_files/figure-pdf/unnamed-chunk-4-1.pdf>]
+<project_files/figure-pdf/unnamed-chunk-5-1.pdf, id=54, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/unnamed-chunk-5-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/unnamed-chunk-5-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/unnamed-chunk-5-1.pdf  used on input line 511.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[6<./project_files/figure-pdf/unnamed-chunk-5-1.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 567--569
+
+ []
+
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 589.
+[7]
+Underfull \vbox (badness 10000) detected at line 735
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 735
+ []
+
+[8]
+Underfull \vbox (badness 10000) detected at line 735
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 735
+ []
+
+[9] [10] [11]
+<project_files/figure-pdf/trend-hpi-1.pdf, id=90, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/trend-hpi-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/trend-hpi-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/trend-hpi-1.pdf  used on input line 889.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[12]
+<project_files/figure-pdf/trend-yoy-1.pdf, id=99, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/trend-yoy-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/trend-yoy-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/trend-yoy-1.pdf  used on input line 932.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[13<./project_files/figure-pdf/trend-hpi-1.pdf>]
+<project_files/figure-pdf/trend-fx-1.pdf, id=109, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/trend-fx-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/trend-fx-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/trend-fx-1.pdf  used on input line 957.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[14<./project_files/figure-pdf/trend-yoy-1.pdf>]
+<project_files/figure-pdf/trend-sales-1.pdf, id=119, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/trend-sales-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/trend-sales-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/trend-sales-1.pdf  used on input line 973.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[15<./project_files/figure-pdf/trend-fx-1.pdf><./project_files/figure-pdf/trend-sales-1.pdf>]
+<project_files/figure-pdf/trend-credit-1.pdf, id=135, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/trend-credit-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/trend-credit-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/trend-credit-1.pdf  used on input line 1008.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[16<./project_files/figure-pdf/trend-credit-1.pdf>]
+<project_files/figure-pdf/corr-heatmap-1.pdf, id=148, 397.485pt x 361.35pt>
+File: project_files/figure-pdf/corr-heatmap-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/corr-heatmap-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/corr-heatmap-1.pdf  used on input line 1058.
+(luatex.def)             Requested size: 397.48402pt x 361.34912pt.
+[17] [18<./project_files/figure-pdf/corr-heatmap-1.pdf>]
+<project_files/figure-pdf/scatter-hpi-usd-1.pdf, id=164, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/scatter-hpi-usd-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/scatter-hpi-usd-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/scatter-hpi-usd-1.pdf  used on input line 1116.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[19<./project_files/figure-pdf/scatter-hpi-usd-1.pdf>]
+<project_files/figure-pdf/regional-hpi-plot-1.pdf, id=181, 397.485pt x 252.945pt>
+File: project_files/figure-pdf/regional-hpi-plot-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/regional-hpi-plot-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/regional-hpi-plot-1.pdf  used on input line 1147.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+<project_files/figure-pdf/regional-bar-1.pdf, id=182, 397.485pt x 505.89pt>
+File: project_files/figure-pdf/regional-bar-1.pdf Graphic file (type pdf)
+<use project_files/figure-pdf/regional-bar-1.pdf>
+Package luatex.def Info: project_files/figure-pdf/regional-bar-1.pdf  used on input line 1180.
+(luatex.def)             Requested size: 397.48402pt x 505.88875pt.
+[20<./project_files/figure-pdf/regional-hpi-plot-1.pdf>]
+Overfull \hbox (157.60701pt too wide) in alignment at lines 1200--1229
+ [][][][] 
+ []
+
+[21<./project_files/figure-pdf/regional-bar-1.pdf>] [22]
+! Undefined control sequence.
+<argument> ...\else \global \expandafter \let \cmrsideswitch 
+                                                  \@tempa \fi \fi 
+l.1285 (Intercept)
+                 & Intercept & 0.635 & 0.051 & 12.49 & 0.0000\\
+
+Here is how much of LuaTeX's memory you used:
+ 26857 strings out of 475892
+ 100000,1373583 words of node,token memory allocated
+ 9620 words of node memory still in use:
+   53 hlist, 5 vlist, 19 rule, 6 disc, 3 local_par, 2 dir, 260 glue, 51 kern, 26 penalty, 11 unset, 2 margin_kern, 534 glyph, 6 align_record, 1 span, 347 attribute, 72 glue_spec, 347 attribute_list, 4 temp, 1 align_stack, 4 if_stack, 2 write, 234 pdf_colorstack nodes
+   avail lists: 1:1,2:3896,3:257,4:1301,5:913,6:42,7:8301,8:1,9:568,10:11,11:447,12:1
+ 48950 multiletter control sequences out of 65536+600000
+ 64 fonts using 19213923 bytes
+ 108i,10n,114p,11228b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!
