@@ -426,7 +426,8 @@ The fact that the maximum exchange rate value is many times larger than the mini
 library(dplyr)
 library(knitr)
 
-turkey_data <- Konut_Index_Sales
+turkey_data <- Konut_Index_Sales %>%
+  filter(Region == "Türkiye")
 
 turkey_data %>%
   summarise(
@@ -489,7 +490,7 @@ library(ggplot2)
 
 # Select a manageable number of regions for readability
 region_means <- Konut_Index_Sales %>%
-  filter(Region != turkey_name) %>%
+  filter(Region != "Türkiye") %>%
   group_by(Region) %>%
   summarise(Mean_HPI = mean(Konut_Endeksi, na.rm = TRUE)) %>%
   arrange(desc(Mean_HPI))
@@ -546,7 +547,7 @@ library(dplyr)
 library(ggplot2)
 
 turkey_hpi <- Konut_Index_Sales %>%
-  filter(Region == turkey_name) %>%
+  filter(Region == "Türkiye") %>%
   mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month))) %>%
   arrange(Date) %>%
   mutate(HPI_YoY = (Konut_Endeksi / lag(Konut_Endeksi, 12) - 1) * 100)
@@ -578,7 +579,7 @@ library(dplyr)
 library(ggplot2)
 
 seasonal_sales <- Konut_Index_Sales %>%
-  filter(Region == turkey_name) %>%
+  filter(Region == "Türkiye") %>%
   group_by(Month) %>%
   summarise(
     Avg_Sales = mean(Total_Sales, na.rm = TRUE),
@@ -612,7 +613,7 @@ library(dplyr)
 library(ggplot2)
 
 regional_growth <- Konut_Index_Sales %>%
-  filter(Region != turkey_name) %>%
+  filter(Region != "Türkiye") %>%
   mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month))) %>%
   group_by(Region) %>%
   arrange(Date) %>%
@@ -659,7 +660,7 @@ library(dplyr)
 library(ggplot2)
 
 annual_regional <- Konut_Index_Sales %>%
-  filter(Region != turkey_name) %>%
+  filter(Region != "Türkiye") %>%
   group_by(Region, Year) %>%
   summarise(Avg_HPI = mean(Konut_Endeksi, na.rm = TRUE), .groups = "drop")
 
@@ -692,7 +693,7 @@ library(dplyr)
 library(ggplot2)
 
 merged_national <- Konut_Index_Sales %>%
-  filter(Region == turkey_name) %>%
+  filter(Region == "Türkiye") %>%
   inner_join(Conversion_Rates, by = c("Year", "Month")) %>%
   mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month)))
 
@@ -729,7 +730,7 @@ library(dplyr)
 library(corrplot)
 
 national_merged <- Konut_Index_Sales %>%
-  filter(Region == turkey_name) %>%
+  filter(Region == "Türkiye") %>%
   inner_join(Conversion_Rates, by = c("Year", "Month"))
 
 monthly_spending <- Expense_Quantity %>%
@@ -767,7 +768,7 @@ library(dplyr)
 library(ggplot2)
 
 turkey_combined <- Konut_Index_Sales %>%
-  filter(Region == turkey_name) %>%
+  filter(Region == "Türkiye") %>%
   mutate(Date = as.Date(sprintf("%d-%02d-01", Year, Month)))
 
 ggplot(turkey_combined, aes(x = Konut_Endeksi, y = Total_Sales)) +
@@ -851,7 +852,7 @@ library(dplyr)
 library(knitr)
 
 national_model_data <- Konut_Index_Sales %>%
-  filter(Region == turkey_name) %>%
+  filter(Region == "Türkiye") %>%
   inner_join(Conversion_Rates, by = c("Year", "Month")) %>%
   left_join(
     Expense_Quantity %>%
@@ -938,7 +939,7 @@ library(dplyr)
 library(knitr)
 
 panel_data <- Konut_Index_Sales %>%
-  filter(Region != turkey_name) %>%
+  filter(Region != "Türkiye") %>%
   inner_join(Conversion_Rates, by = c("Year", "Month")) %>%
   left_join(
     Expense_Quantity %>%
