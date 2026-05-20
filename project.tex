@@ -7,8 +7,7 @@
 \documentclass[
   11pt,
   a4paper,
-  DIV=11,
-  numbers=noendperiod]{scrartcl}
+]{article}
 \usepackage{xcolor}
 \usepackage[lmargin=2cm,rmargin=2cm,tmargin=2cm,bmargin=2cm]{geometry}
 \usepackage{amsmath,amssymb}
@@ -153,17 +152,8 @@
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{multirow}
-\usepackage{wrapfig}
 \usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
 \usepackage{makecell}
-\usepackage{xcolor}
-\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -221,7 +211,7 @@
 
 \title{Why Have House Prices in Turkey Gone Up in the Last Ten Years?}
 \author{Ömer Furkan Demirci \and Fatih Alper Vural}
-\date{2026-05-17}
+\date{2026-05-20}
 \begin{document}
 \maketitle
 
@@ -230,6 +220,12 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{options}\NormalTok{(}\AttributeTok{kableExtra.latex.load\_packages =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \subsection*{Abstract}\label{abstract}
 \addcontentsline{toc}{subsection}{Abstract}
@@ -389,7 +385,7 @@ The processed dataset consists of three main analytical tables:
 \end{Highlighting}
 \end{Shaded}
 
-  \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/unnamed-chunk-2-1.pdf}}
+  \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/unnamed-chunk-3-1.pdf}}
 \end{itemize}
 
 \subsubsection{Credit Card Expenditure
@@ -440,7 +436,7 @@ Table}\label{credit-card-expenditure-table}
 \end{Highlighting}
 \end{Shaded}
 
-  \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+  \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/unnamed-chunk-4-1.pdf}}
 \end{itemize}
 
 \subsubsection{Housing Panel Dataset}\label{housing-panel-dataset}
@@ -482,7 +478,7 @@ Table}\label{credit-card-expenditure-table}
 \end{Highlighting}
 \end{Shaded}
 
-  \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/unnamed-chunk-4-1.pdf}}
+  \pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/unnamed-chunk-5-1.pdf}}
 \end{itemize}
 
 \begin{Shaded}
@@ -512,7 +508,7 @@ Table}\label{credit-card-expenditure-table}
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/unnamed-chunk-5-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{project_files/figure-pdf/unnamed-chunk-6-1.pdf}}
 
 \subsection{Potential Analyses}\label{potential-analyses}
 
@@ -1323,19 +1319,20 @@ Only}\label{baseline-model-exchange-rate-only}
     \StringTok{\textasciigrave{}}\AttributeTok{p value}\StringTok{\textasciigrave{}}    \OtherTok{=} \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Pr(\textgreater{}|t|)}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{4}\NormalTok{), }\AttributeTok{nsmall =} \DecValTok{4}\NormalTok{)}
 \NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{select}\NormalTok{(Term, Estimate, }\StringTok{\textasciigrave{}}\AttributeTok{Std. Error}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{p value}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"Table 5. Baseline Model – R² = \%.3f"}\NormalTok{,}
-                          \FunctionTok{summary}\NormalTok{(m1)}\SpecialCharTok{$}\NormalTok{r.squared)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{,}
+      \AttributeTok{caption =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"Table 5. Baseline Model – R² = \%.3f"}\NormalTok{,}
+                        \FunctionTok{summary}\NormalTok{(m1)}\SpecialCharTok{$}\NormalTok{r.squared)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[t]{llrrrl}
+\begin{longtable}[t]{lrrrl}
 \caption{\label{tab:model1}Table 5. Baseline Model – R² = 0.959}\\
 \toprule
- & Term & Estimate & Std. Error & t value & p value\\
+Term & Estimate & Std. Error & t value & p value\\
 \midrule
-(Intercept) & Intercept & 0.644 & 0.052 & 12.49 & 0.0000\\
-log\_USD & log(USD/TRY) & 1.200 & 0.022 & 55.03 & 0.0000\\
+Intercept & 0.644 & 0.052 & 12.49 & 0.0000\\
+log(USD/TRY) & 1.200 & 0.022 & 55.03 & 0.0000\\
 \bottomrule
 \end{longtable}
 
@@ -1368,22 +1365,22 @@ Expenditure}\label{full-model-exchange-rate-sales-and-credit-card-expenditure}
 \NormalTok{    )}
 \NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{select}\NormalTok{(Term, Estimate, }\StringTok{\textasciigrave{}}\AttributeTok{Std. Error}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{t value}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{p value}\StringTok{\textasciigrave{}}\NormalTok{, Sig) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"Table 6. Full Model – R² = \%.3f, Adjusted R² = \%.3f"}\NormalTok{,}
-                          \FunctionTok{summary}\NormalTok{(m2)}\SpecialCharTok{$}\NormalTok{r.squared,}
-                          \FunctionTok{summary}\NormalTok{(m2)}\SpecialCharTok{$}\NormalTok{adj.r.squared)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{,}
+      \AttributeTok{caption =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"Table 6. Full Model – R² = \%.3f"}\NormalTok{,}
+                        \FunctionTok{summary}\NormalTok{(m2)}\SpecialCharTok{$}\NormalTok{r.squared)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[t]{llrrrll}
-\caption{\label{tab:model2}Table 6. Full Model – R² = 0.986, Adjusted R² = 0.985}\\
+\begin{longtable}[t]{lrrrll}
+\caption{\label{tab:model2}Table 6. Full Model – R² = 0.986}\\
 \toprule
- & Term & Estimate & Std. Error & t value & p value & Sig\\
+Term & Estimate & Std. Error & t value & p value & Sig\\
 \midrule
-(Intercept) & Intercept & -8.956 & 0.820 & -10.92 & 0.0000 & ***\\
-log\_USD & log(USD/TRY) & 0.256 & 0.062 & 4.12 & 0.0001 & ***\\
-log\_Sales & log(Sales) & -0.120 & 0.045 & -2.68 & 0.0084 & **\\
-log\_CC & log(CC Spend) & 0.679 & 0.044 & 15.55 & 0.0000 & ***\\
+Intercept & -8.956 & 0.820 & -10.92 & 0.0000 & ***\\
+log(USD/TRY) & 0.256 & 0.062 & 4.12 & 0.0001 & ***\\
+log(Sales) & -0.120 & 0.045 & -2.68 & 0.0084 & **\\
+log(CC Spend) & 0.679 & 0.044 & 15.55 & 0.0000 & ***\\
 \bottomrule
 \end{longtable}
 
